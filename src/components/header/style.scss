@@ -1,7 +1,123 @@
-.header {
-    color: red;
+@import '../../style/inc';
 
-    a {
-        color: green;
+.header {
+    background-color: #000;
+    color: #fff;
+    width: 100vw;
+
+    &__content {
+        grid-template-areas:
+            'n n n n n n n n n action-resized action-resized'
+            'burger logo logo menu menu menu menu menu menu action action';
+        align-items: center;
+        padding: 60px 0;
+        row-gap: 17.5px;
+        display: grid;
+
+        @media (max-width: $md2 + px) {
+            padding: 22px 0;
+        }
+    }
+
+    &__buger {
+        grid-area: burger;
+    }
+
+    &__logo {
+        @include adaptive-value('font-size', 35, 22, 1);
+
+        grid-area: logo;
+
+        em {
+            color: blue;
+        }
+
+        @media (min-width: $md3 + px) {
+            grid-column: burger / logo;
+        }
+    }
+
+    &__nav {
+        grid-area: menu;
+
+        @media (min-width: $md3 + px) and (max-width: $md2 + px) {
+            justify-content: flex-end;
+            grid-column: menu / action;
+            display: flex;
+        }
+
+        @media (max-width: $md3 + px) {
+            display: none;
+        }
+    }
+
+    &__actions {
+        grid-area: action;
+
+        @media (min-width: $md3 + px) and (max-width: $md2 + px) {
+            justify-content: flex-end;
+            grid-area: action-resized;
+            display: flex;
+        }
+    }
+}
+
+.burgerBtn {
+    position: relative;
+    cursor: pointer;
+    height: 20px;
+    width: 28px;
+
+    &::before,
+    span,
+    &::after {
+        background-color: $primary-color;
+        transition: width 0.2s ease-in;
+        position: absolute;
+        display: block;
+        height: 2px;
+        width: 28px;
+        right: 0;
+    }
+
+    &::before {
+        content: '';
+        top: 1px;
+    }
+
+    span {
+        top: 10px;
+    }
+
+    &::after {
+        content: '';
+        bottom: 0;
+    }
+
+    @media (min-width: $md3 + px) {
+        display: none;
+    }
+}
+
+.navigation {
+    &__list {
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    &__item {
+        font-size: 15px;
+
+        &:not(:last-child) {
+            @include adaptive-value('margin-right', 65, 40, 1);
+        }
+    }
+}
+
+.actions {
+    &__item {
+        &:not(:last-child) {
+            @include adaptive-value('margin-right', 55, 15, 1);
+        }
     }
 }

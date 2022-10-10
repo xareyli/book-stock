@@ -1,0 +1,33 @@
+$min-width: 320; // your value
+$max-width: 1280; // your value
+$max-width-container: 1152; // your value
+
+$md1: $max-width-container + 12;
+$md2: 1000;
+$md3: 767.98;
+$md4: 479.98;
+$primary-color: blue;
+$secondary-color: #fff;
+
+@mixin adaptive-value($property, $start-size, $min-size, $type) {
+    $add-size: $start-size - $min-size;
+
+    @if $type == 1 {
+        // only if smaller than the container
+        #{$property}: $start-size + px;
+
+        @media (max-width: #{$max-width-container + px}) {
+            #{$property}: calc(#{$min-size + px} + #{$add-size} * ((100vw - 320px) / #{$max-width-container - 320}));
+        }
+    } @else if $type == 2 {
+        // only if bigger than the container
+        #{$property}: $start-size + px;
+
+        @media (min-width: #{$max-width-container + px}) {
+            #{$property}: calc(#{$min-size + px} + #{$add-size} * ((100vw - 320px) / #{$max-width - 320}));
+        }
+    } @else {
+        // all the time
+        #{$property}: calc(#{$min-size + px} + #{$add-size} * ((100vw - 320px) / #{$max-width - 320}));
+    }
+}
