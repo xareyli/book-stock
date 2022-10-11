@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title><% preact.title %></title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>assets/favicon.ico">
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>assets/favicon.ico" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            @font-face {
+                font-family: 'Gilroy';
+                src: url('assets/fonts/Gilroy-ExtraBold.otf');
+                font-weight: 800;
+            }
+
+            @font-face {
+                font-family: 'Amadeus';
+                src: url('assets/fonts/AmadeusAP.ttf');
+                font-weight: 400;
+            }
+        </style>
         <% preact.headEnd %>
     </head>
     <body>

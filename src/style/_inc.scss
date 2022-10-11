@@ -6,8 +6,9 @@ $md1: $max-width-container + 12;
 $md2: 1000;
 $md3: 767.98;
 $md4: 479.98;
-$primary-color: blue;
-$secondary-color: #fff;
+$primary-color: #fff;
+$secondary-color: #0a62a9;
+$primary-font: 'Montserrat', sans-serif;
 
 @mixin adaptive-value($property, $start-size, $min-size, $type) {
     $add-size: $start-size - $min-size;

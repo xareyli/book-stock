@@ -2,14 +2,16 @@ import style from './style.scss';
 
 const Header = () => (
     <header class={style.header}>
-        <div class={`_container`}>
-            <div class={style.header__content}>
+        <div class={`${style.header__wrapper}`}>
+            <div class={`${style.header__content} _container`}>
                 <button class={`${style.header__burger} ${style.burgerBtn}`}>
                     <span />
                 </button>
 
                 <h1 class={style.header__logo}>
-                    <em>book</em>stock
+                    <a href="#">
+                        <em>book</em>stock
+                    </a>
                 </h1>
 
                 <nav class={`${style.header__nav} ${style.navigation}`}>
@@ -33,8 +35,8 @@ const Header = () => (
                 </nav>
 
                 <div class={`${style.header__actions} ${style.actions}`}>
-                    <span class={style.actions__item}>h</span>
-                    <span class={style.actions__item}>p</span>
+                    <button class={`${style.actions__item} ico-heart`} />
+                    <button class={`${style.actions__item} ico-profile`} />
                 </div>
             </div>
         </div>

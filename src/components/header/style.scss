@@ -1,35 +1,55 @@
 @import '../../style/inc';
 
 .header {
-    background-color: #000;
-    color: #fff;
-    width: 100vw;
+    height: 160px;
+
+    &__wrapper {
+        position: fixed;
+        color: #fff;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
 
     &__content {
         grid-template-areas:
             'n n n n n n n n n action-resized action-resized'
             'burger logo logo menu menu menu menu menu menu action action';
         align-items: center;
-        padding: 60px 0;
+        padding: 60px 15px;
         row-gap: 17.5px;
         display: grid;
 
         @media (max-width: $md2 + px) {
-            padding: 22px 0;
+            padding: 22px 15px;
         }
     }
 
-    &__buger {
+    &__burger {
+        margin-right: 5px;
         grid-area: burger;
     }
 
     &__logo {
         @include adaptive-value('font-size', 35, 22, 1);
 
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+        color: $primary-color;
+        font-weight: 800;
         grid-area: logo;
 
         em {
-            color: blue;
+            transition: color 0.3s ease;
+            color: $secondary-color;
+        }
+
+        &:hover {
+            color: $secondary-color;
+
+            em {
+                color: $primary-color;
+            }
         }
 
         @media (min-width: $md3 + px) {
@@ -71,12 +91,13 @@
     &::before,
     span,
     &::after {
-        background-color: $primary-color;
+        @include adaptive-value('width', 25, 21, 1);
+
+        background-color: $secondary-color;
         transition: width 0.2s ease-in;
         position: absolute;
         display: block;
         height: 2px;
-        width: 28px;
         right: 0;
     }
 
@@ -106,7 +127,12 @@
     }
 
     &__item {
+        transition: color 0.3s ease;
         font-size: 15px;
+
+        &:hover {
+            color: $secondary-color;
+        }
 
         &:not(:last-child) {
             @include adaptive-value('margin-right', 65, 40, 1);
@@ -116,6 +142,16 @@
 
 .actions {
     &__item {
+        @include adaptive-value('font-size', 30, 22, 1);
+
+        transition: color 0.3s ease;
+        color: $secondary-color;
+        cursor: pointer;
+
+        &:hover {
+            color: $primary-color;
+        }
+
         &:not(:last-child) {
             @include adaptive-value('margin-right', 55, 15, 1);
         }
