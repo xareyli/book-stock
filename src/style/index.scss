@@ -149,8 +149,26 @@ a {
 
 button {
     background-color: transparent;
+    cursor: pointer;
     color: inherit;
     border: 0;
+}
+
+._blackout {
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+    opacity: 0;
+    left: 0;
+    top: 0;
+
+    &--visible {
+        pointer-events: all;
+        opacity: 1;
+    }
 }
 
 // <wrapper>====================================================================================================
@@ -176,4 +194,5 @@ button {
 
 body {
     font-family: $primary-font;
+    color: $primary-color;
 }

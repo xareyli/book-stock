@@ -1,0 +1,20 @@
+@import '../../style/inc';
+
+.button {
+    @include adaptive-value('padding-right', 85, 40, 1);
+    @include adaptive-value('padding-bottom', 22, 8, 1);
+    @include adaptive-value('padding-left', 85, 40, 1);
+    @include adaptive-value('padding-top', 22, 8, 1);
+    @include adaptive-value('font-size', 20, 12, 1);
+
+    transition: color, background-color 0.3s ease;
+    background-color: $secondary-color;
+    border: 1px solid $secondary-color;
+    font-family: Gilroy, sans-serif;
+    color: $primary-color;
+
+    &:hover {
+        background-color: $primary-color;
+        color: $secondary-color;
+    }
+}
