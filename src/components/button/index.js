@@ -1,5 +1,5 @@
 import style from './style.scss';
 
-const Button = ({ children }) => <button class={style.button}>{children}</button>;
+const Button = ({ className, children }) => <button class={`${className} ${style.button}`}>{children}</button>;
 
 export default Button;

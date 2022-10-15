@@ -1,17 +1,19 @@
 @font-face {
-    font-family: icons;
-    src: url('../assets/fonts/icons/icons.ttf?q9qlcj') format('truetype'),
-        url('../assets/fonts/icons/icons.woff?q9qlcj') format('woff'),
-        url('../assets/fonts/icons/icons.svg?q9qlcj#icons') format('svg');
+    font-family: icomoon;
+    src: url('../assets/fonts/icons/icomoon.eot?hpqetp');
+    src: url('../assets/fonts/icons/icomoon.eot?hpqetp#iefix') format('embedded-opentype'),
+        url('../assets/fonts/icons/icomoon.ttf?hpqetp') format('truetype'),
+        url('../assets/fonts/icons/icomoon.woff?hpqetp') format('woff'),
+        url('../assets/fonts/icons/icomoon.svg?hpqetp#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
 }
 
-[class^='ico-'],
-[class*=' ico-'] {
+[class^='icon-'],
+[class*=' icon-'] {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: icons, sans-serif !important;
+    font-family: icomoon, sans-serif !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -24,74 +26,74 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.ico-lock::before {
+.icon-checkmark::before {
     content: '\e900';
 }
 
-.ico-mail-small::before {
+.icon-lock::before {
     content: '\e901';
 }
 
-.ico-resend::before {
+.icon-mail-small::before {
     content: '\e902';
 }
 
-.ico-delivery-man::before {
+.icon-resend::before {
     content: '\e903';
 }
 
-.ico-delivery-van::before {
+.icon-delivery-man::before {
     content: '\e904';
 }
 
-.ico-coffee-cup::before {
+.icon-delivery-van::before {
     content: '\e905';
 }
 
-.ico-slider-arrow::before {
+.icon-coffee-cup::before {
     content: '\e906';
 }
 
-.ico-tiktok::before {
+.icon-slider-arrow::before {
     content: '\e907';
 }
 
-.ico-map-pointer::before {
+.icon-tiktok::before {
     content: '\e908';
 }
 
-.ico-mail-big::before {
+.icon-map-pointer::before {
     content: '\e909';
 }
 
-.ico-heart-empty::before {
+.icon-mail-big::before {
     content: '\e90a';
 }
 
-.ico-heart::before {
+.icon-heart-empty::before {
     content: '\e90b';
 }
 
-.ico-search::before {
+.icon-heart::before {
     content: '\e90c';
 }
 
-.ico-spoiler-arrow::before {
+.icon-search::before {
     content: '\e90d';
 }
 
-.ico-profile::before {
+.icon-profile::before {
     content: '\e90e';
 }
 
-.ico-phone::before {
+.icon-phone::before {
     content: '\e942';
 }
 
-.ico-star::before {
+.icon-star::before {
     content: '\e9d9';
 }
 
-.ico-instagram::before {
+.icon-instagram::before {
     content: '\ea92';
 }

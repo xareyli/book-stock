@@ -1,0 +1,30 @@
+@import '../../style/inc';
+
+.blockTitle {
+    @include adaptive-value('font-size', 30, 20, 1);
+
+    text-transform: uppercase;
+    align-items: center;
+    font-weight: 800;
+    display: flex;
+
+    &::before {
+        @include adaptive-value('margin-right', 15, 9, 1);
+        @include adaptive-value('height', 72, 37, 1);
+        @include adaptive-value('width', 10, 5, 1);
+
+        background-color: $secondary-color;
+        display: inline-block;
+        border-radius: 5px;
+        height: 72px;
+        content: '';
+    }
+
+    &--black {
+        color: #000;
+    }
+
+    &--white {
+        color: #fff;
+    }
+}

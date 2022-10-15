@@ -1,0 +1,140 @@
+@import '../../../../style/inc';
+
+.filters {
+    padding-right: 15px;
+
+    &__item {
+        &:not(:last-child) {
+            @include adaptive-value('margin-bottom', 50, 12, 1);
+        }
+    }
+}
+
+.formTitle {
+    @include adaptive-value('font-size', 18, 12, 1);
+
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    @media (min-width: $md4 + px) {
+        svg {
+            display: none;
+        }
+    }
+
+    span {
+        word-break: break-all;
+        padding-right: 5px;
+    }
+
+    svg {
+        flex: 0 0 11px;
+    }
+}
+
+.priceForm {
+    &__slider {
+        @media (max-width: $md4 + px) {
+            display: none;
+        }
+    }
+}
+
+.genreForm {
+    &__list {
+        flex-direction: column;
+        display: flex;
+
+        @media (max-width: $md4 + px) {
+            display: none;
+        }
+    }
+
+    &__item {
+        @include adaptive-value('font-size', 15, 12, 1);
+
+        align-items: center;
+        width: fit-content;
+        font-weight: 300;
+        cursor: pointer;
+        display: flex;
+
+        &:not(:last-child) {
+            @include adaptive-value('margin-bottom', 21, 16, 1);
+        }
+
+        input[type='checkbox'] {
+            display: none;
+        }
+
+        i {
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin-right: 12px;
+            font-size: 22px;
+            display: block;
+            height: 24px;
+            width: 24px;
+
+            &::before {
+                transition: opacity 0.3s ease;
+                opacity: 0;
+            }
+        }
+
+        input:checked + i::before,
+        &:hover > input:not(:checked) + i::before {
+            opacity: 1;
+        }
+    }
+}
+
+.formOption {
+    @media (max-width: $md4 + px) {
+        &--open {
+            transform: translate(-10px, -14px);
+            background-color: $modal-color;
+            position: absolute;
+            max-width: 270px;
+            padding: 10px;
+            z-index: 100;
+
+            .formTitle {
+                justify-content: flex-start;
+
+                svg {
+                    transform: rotate(180deg);
+                    left: 100%;
+                }
+            }
+
+            .formOption__closeModal {
+                display: block;
+            }
+        }
+
+        &--open .formOption__content {
+            display: block;
+        }
+    }
+
+    &__header {
+        @include adaptive-value('margin-bottom', 24, 20, 1);
+
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+    }
+
+    &__closeModal {
+        background: url('../../../../assets/cross.svg') center center no-repeat;
+        background-size: cover;
+        margin-left: 20px;
+        display: none;
+        height: 20px;
+        width: 22px;
+    }
+}

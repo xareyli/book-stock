@@ -151,6 +151,7 @@ button {
     background-color: transparent;
     cursor: pointer;
     color: inherit;
+    padding: 0;
     border: 0;
 }
 
@@ -168,6 +169,49 @@ button {
     &--visible {
         pointer-events: all;
         opacity: 1;
+    }
+}
+
+._ibg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+    img {
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.rating-number {
+    background-color: $secondary-color;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    line-height: 35px;
+    margin-top: -4px;
+    font-size: 15px;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+
+    &::after {
+        border-top: 9px solid $secondary-color;
+        border-right: 15px solid transparent;
+        border-left: 15px solid transparent;
+        background-color: transparent;
+        position: absolute;
+        bottom: -9px;
+        content: '';
+        height: 0;
+        width: 0;
+        left: 0;
     }
 }
 

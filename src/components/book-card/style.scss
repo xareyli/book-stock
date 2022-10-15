@@ -1,0 +1,96 @@
+@import '../../style/inc';
+
+.card {
+    box-shadow: 0 0 7px #105b98;
+    max-width: 293px;
+    min-width: 184px;
+
+    &__img {
+        aspect-ratio: 270/173;
+        width: 100%;
+    }
+
+    &__content {
+        padding: 10px 7.5px 15px;
+    }
+
+    &__rating {
+        align-items: flex-end;
+        display: flex;
+    }
+
+    &__starWrapper {
+        flex: 1 1 auto;
+    }
+
+    &__star {
+        margin-right: 5px;
+        color: #f4f900;
+    }
+
+    &__heart {
+        @include adaptive-value('font-size', 21, 16, 1);
+    }
+
+    &__metaWrapper {
+        @include adaptive-value('margin-bottom', 35, 14, 1);
+        @include adaptive-value('margin-top', 25, 10, 1);
+
+        flex-direction: column;
+        display: flex;
+
+        span {
+            line-height: 1.25;
+
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    &__name {
+        @include adaptive-value('font-size', 15, 12, 1);
+
+        font-weight: 500;
+    }
+
+    &__author {
+        @include adaptive-value('font-size', 14, 12, 1);
+    }
+
+    &__year {
+        @include adaptive-value('font-size', 14, 12, 1);
+
+        color: #7a7a7a;
+    }
+
+    &__footer {
+        align-items: center;
+        display: flex;
+    }
+
+    &__buyBtn {
+        @include adaptive-value('padding-bottom', 10, 5, 1);
+        @include adaptive-value('padding-right', 34, 21, 1);
+        @include adaptive-value('padding-left', 34, 21, 1);
+        @include adaptive-value('padding-top', 10, 5, 1);
+
+        padding: 10px 34px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    &__price {
+        @include adaptive-value('margin-left', 15, 6, 1);
+        @include adaptive-value('font-size', 15, 12, 1);
+
+        word-break: break-all;
+        margin-right: 3px;
+        flex: 1 1 auto;
+    }
+
+    &__newPrice {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}

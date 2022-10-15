@@ -8,7 +8,9 @@ $md3: 767.98;
 $md4: 479.98;
 $primary-color: #fff;
 $secondary-color: #0a62a9;
+$modal-color: #6caee3;
 $primary-font: 'Montserrat', sans-serif;
+$secondary-font: 'Roboto', sans-serif;
 
 @mixin adaptive-value($property, $start-size, $min-size, $type) {
     $add-size: $start-size - $min-size;

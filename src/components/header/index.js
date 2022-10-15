@@ -35,8 +35,8 @@ const Header = () => (
                 </nav>
 
                 <div class={`${style.header__actions} ${style.actions}`}>
-                    <button class={`${style.actions__item} ico-heart`} />
-                    <button class={`${style.actions__item} ico-profile`} />
+                    <button class={`${style.actions__item} icon-heart`} />
+                    <button class={`${style.actions__item} icon-profile`} />
                 </div>
             </div>
         </div>
