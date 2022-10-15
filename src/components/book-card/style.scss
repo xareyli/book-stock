@@ -75,9 +75,18 @@
         @include adaptive-value('padding-left', 34, 21, 1);
         @include adaptive-value('padding-top', 10, 5, 1);
 
-        padding: 10px 34px;
         font-size: 14px;
         letter-spacing: 0.5px;
+        transition: color, background-color 0.3s ease;
+        background-color: $secondary-color;
+        border: 1px solid $secondary-color;
+        font-family: Gilroy, sans-serif;
+        color: $primary-color;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $secondary-color;
+        }
     }
 
     &__price {

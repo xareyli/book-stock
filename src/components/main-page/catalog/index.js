@@ -3,6 +3,7 @@ import style from './style.scss';
 
 import BlockTitle from '../../block-title/';
 import BookCard from '../../book-card';
+import SearchInput from '../../search-input';
 
 const Catalog = ({ className }) => (
     <section class={`${style.catalog} ${className}`}>
@@ -25,7 +26,7 @@ const Catalog = ({ className }) => (
                             <button class={style.searchSort__sort}>По рейтингу</button>
                         </div>
 
-                        <input class={style.searchSort__search} />
+                        <SearchInput className={style.searchSort__search} />
                     </div>
 
                     <div class={`${style.catalog__productsGrid} ${style.productsGrid}`}>

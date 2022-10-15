@@ -1,7 +1,6 @@
 import style from './style.scss';
 
 import img from '../../assets/card-mock.png';
-import Button from '../button';
 import IBG from '../ibg';
 
 const BookCard = ({ className, isStock = false }) => (
@@ -28,7 +27,7 @@ const BookCard = ({ className, isStock = false }) => (
             </div>
 
             <div class={style.card__footer}>
-                <Button className={style.card__buyBtn}>Купить</Button>
+                <button class={style.card__buyBtn}>Купить</button>
 
                 <span class={style.card__price}>2650 Р</span>
 
