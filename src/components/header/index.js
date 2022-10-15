@@ -1,46 +1,67 @@
+import { useEffect, useRef } from 'preact/hooks';
 import style from './style.scss';
 
-const Header = () => (
-    <header class={style.header}>
-        <div class={`${style.header__wrapper}`}>
-            <div class={`${style.header__content} _container`}>
-                <button class={`${style.header__burger} ${style.burgerBtn}`}>
-                    <span />
-                </button>
+const Header = () => {
+    const headerElement = useRef(null);
 
-                <h1 class={style.header__logo}>
-                    <a href="#">
-                        <em>book</em>stock
-                    </a>
-                </h1>
+    useEffect(() => {
+        if (headerElement.current) {
+            const callback = entries => {
+                if (entries[0].isIntersecting) {
+                    headerElement.current.classList.remove(style._scroll);
+                } else {
+                    headerElement.current.classList.add(style._scroll);
+                }
+            };
 
-                <nav class={`${style.header__nav} ${style.navigation}`}>
-                    <ul class={style.navigation__list}>
-                        <li class={style.navigation__item}>
-                            <a href="#">Главная</a>
-                        </li>
-                        <li class={style.navigation__item}>
-                            <a href="#">Каталог</a>
-                        </li>
-                        <li class={style.navigation__item}>
-                            <a href="#">Кофейня</a>
-                        </li>
-                        <li class={style.navigation__item}>
-                            <a href="#">Акции</a>
-                        </li>
-                        <li class={style.navigation__item}>
-                            <a href="#">Контакты</a>
-                        </li>
-                    </ul>
-                </nav>
+            const headerObserver = new IntersectionObserver(callback);
 
-                <div class={`${style.header__actions} ${style.actions}`}>
-                    <button class={`${style.actions__item} icon-heart`} />
-                    <button class={`${style.actions__item} icon-profile`} />
+            headerObserver.observe(headerElement.current);
+        }
+    }, [headerElement.current]);
+
+    return (
+        <header class={style.header} ref={headerElement}>
+            <div class={`${style.header__wrapper}`}>
+                <div class={`${style.header__content} _container`}>
+                    <button class={`${style.header__burger} ${style.burgerBtn}`}>
+                        <span />
+                    </button>
+
+                    <h1 class={style.header__logo}>
+                        <a href="#">
+                            <em>book</em>stock
+                        </a>
+                    </h1>
+
+                    <nav class={`${style.header__nav} ${style.navigation}`}>
+                        <ul class={style.navigation__list}>
+                            <li class={style.navigation__item}>
+                                <a href="#">Главная</a>
+                            </li>
+                            <li class={style.navigation__item}>
+                                <a href="#">Каталог</a>
+                            </li>
+                            <li class={style.navigation__item}>
+                                <a href="#">Кофейня</a>
+                            </li>
+                            <li class={style.navigation__item}>
+                                <a href="#">Акции</a>
+                            </li>
+                            <li class={style.navigation__item}>
+                                <a href="#">Контакты</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class={`${style.header__actions} ${style.actions}`}>
+                        <button class={`${style.actions__item} icon-heart`} />
+                        <button class={`${style.actions__item} icon-profile`} />
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-);
+        </header>
+    );
+};
 
 export default Header;

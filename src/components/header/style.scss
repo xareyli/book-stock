@@ -2,18 +2,26 @@
 
 .header {
     position: absolute;
-    height: 160px;
+    height: 80px;
     z-index: 300;
     width: 100%;
     left: 0;
     top: 0;
 
     &__wrapper {
+        background-color: rgba($color: $secondary-color, $alpha: 0%);
+        transition: background-color 0.3s ease;
         position: fixed;
         color: #fff;
         width: 100%;
         left: 0;
         top: 0;
+    }
+
+    &._scroll {
+        .header__wrapper {
+            background-color: rgba($color: $secondary-color, $alpha: 50%);
+        }
     }
 
     &__content {
