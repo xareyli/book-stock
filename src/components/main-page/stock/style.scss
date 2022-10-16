@@ -1,0 +1,23 @@
+@import '../../../style/inc';
+
+.grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 33px;
+    display: grid;
+
+    &__item {
+        margin: 0 auto;
+    }
+
+    @media (max-width: $md2 + px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: $md3 + px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stock__pagination {
+    @include adaptive-value('margin-top', 60, 15, 1);
+}

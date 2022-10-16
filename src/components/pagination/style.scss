@@ -1,0 +1,40 @@
+@import '../../style/inc';
+
+.pagination {
+    text-align: end;
+    font-size: 0;
+
+    &__item {
+        @include adaptive-value('margin-right', 12, 7, 1);
+        @include adaptive-value('font-size', 18, 12, 1);
+
+        transition: background-color, color, 0.3s linear;
+
+        @include adaptive-value('width', 25, 22, 1);
+
+        background-color: $secondary-color;
+        color: $primary-color;
+        box-sizing: border-box;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        padding: 5px 0;
+
+        &:hover {
+            background-color: $primary-color;
+            outline: 1px solid $secondary-color;
+            color: $secondary-color;
+        }
+    }
+
+    &__dot {
+        @include adaptive-value('margin-left', 5, 3, 1);
+
+        background-color: #000;
+        vertical-align: bottom;
+        display: inline-block;
+        border-radius: 50%;
+        height: 5px;
+        width: 5px;
+    }
+}

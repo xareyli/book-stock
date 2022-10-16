@@ -3,6 +3,7 @@ import style from './style.scss';
 
 import BlockTitle from '../../block-title/';
 import BookCard from '../../book-card';
+import Pagination from '../../pagination';
 import SearchInput from '../../search-input';
 
 const Catalog = ({ className }) => (
@@ -39,6 +40,8 @@ const Catalog = ({ className }) => (
                     </div>
                 </div>
             </div>
+
+            <Pagination className={style.catalog__pagination} />
         </div>
     </section>
 );

@@ -39,6 +39,10 @@
     &__productsGrid {
         @include adaptive-value('margin-top', 60, 45, 1);
     }
+
+    &__pagination {
+        @include adaptive-value('margin-top', 60, 18, 1);
+    }
 }
 
 .filtersTitle {

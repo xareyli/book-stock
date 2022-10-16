@@ -29,7 +29,7 @@ const BookCard = ({ className, isStock = false }) => (
             <div class={style.card__footer}>
                 <button class={style.card__buyBtn}>Купить</button>
 
-                <span class={style.card__price}>2650 Р</span>
+                <span class={`${style.card__price} ${isStock ? style['card__price--old'] : ''}`}>2650 Р</span>
 
                 {isStock ? (
                     <span class={style.card__newPrice}>2350 Р</span>

@@ -1,0 +1,42 @@
+@import '../../style/inc';
+
+.container {
+    @include adaptive-value('column-gap', 50, 10, 1);
+
+    align-items: center;
+    display: flex;
+}
+
+.block {
+    flex: 0 1 50%;
+}
+
+.image {
+    aspect-ratio: 2/1.7;
+}
+
+.text {
+    @include adaptive-value('font-size', 20, 10, 1);
+
+    &--black {
+        color: #000;
+    }
+
+    &--white {
+        color: #fff;
+    }
+}
+
+.link {
+    @include adaptive-value('margin-top', 15, 5, 1);
+    @include adaptive-value('font-size', 18, 9, 1);
+
+    transition: color 0.3s ease;
+    text-decoration: underline;
+    color: #8a8a8a;
+    display: block;
+
+    &:hover {
+        color: #000;
+    }
+}
