@@ -1,6 +1,8 @@
 import style from './style.scss';
 
-import img from '../../assets/image/cafeteria/img.png';
+import cafeteriaImg from '../../assets/image/cafeteria/img.png';
+import contactsBg from '../../assets/image/main-page/contacts/bg.png';
+import contactsMap from '../../assets/image/main-page/contacts/map.png';
 
 import BlockTitle from '../../components/block-title';
 import Button from '../../components/button';
@@ -49,7 +51,7 @@ const Home = () => (
                         но и уделить время чтению книг,
                         в изобилии разместившихся на полках. Места хватит для всех, так как у нас есть целых три зала!"
                     linkText="Больше информации"
-                    img={img}
+                    img={cafeteriaImg}
                 />
             </div>
         </section>
@@ -59,6 +61,57 @@ const Home = () => (
                 <BlockTitle>АКЦИИ</BlockTitle>
 
                 <Stock className={style.stock__content} />
+            </div>
+        </section>
+
+        <section class={`${style.homeSection} ${style.contacts}`}>
+            <div class="_container">
+                <BlockTitle>КОНТАКТЫ</BlockTitle>
+            </div>
+
+            <div class={`${style.contacts__content} _ibg`} style={{ backgroundImage: `url(${contactsBg})` }}>
+                <div class={`_container ${style.contacts__grid}`}>
+                    <h2 class={style.contacts__title}>
+                        Свяжитесь с нами удобным для Вас способом, будем рады сотрудничеству!
+                    </h2>
+
+                    <div class={`${style.contacts__map} _ibg`} style={{ backgroundImage: `url(${contactsMap})` }} />
+
+                    <div class={style.contacts__contactsList}>
+                        <div class={`${style.contacts__contactItem} ${style.contactItem}`}>
+                            <span class={style.contactItem__key}>Звоните по номеру :</span>
+                            <a href="tel:+7919651892" class={style.contactItem__value}>
+                                <i class="icon-phone" /> 7919651892
+                            </a>
+                        </div>
+
+                        <div class={`${style.contacts__contactItem} ${style.contactItem}`}>
+                            <span class={style.contactItem__key}>Мы находимся по адресу :</span>
+                            <span class={style.contactItem__value}>
+                                <i class="icon-map-pointer" /> Г. Санкт-Петербург, проспект Добролюбова 47а
+                            </span>
+                        </div>
+
+                        <div class={`${style.contacts__contactItem} ${style.contactItem}`}>
+                            <span class={style.contactItem__key}>Электронная почта :</span>
+                            <span class={style.contactItem__value}>
+                                <i class="icon-mail-big" /> bookstocksaint-p@gmail.com
+                            </span>
+                        </div>
+
+                        <div class={`${style.contacts__contactItem} ${style.contactItem}`}>
+                            <span class={style.contactItem__key}>Наши соц сети :</span>
+                            <span class={`${style.contactItem__value} ${style['contactItem__value--icons-list']}`}>
+                                <a href="#">
+                                    <i class="icon-instagram" />
+                                </a>{' '}
+                                <a href="#">
+                                    <i class="icon-tiktok" />
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

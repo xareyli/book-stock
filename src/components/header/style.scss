@@ -18,23 +18,28 @@
         top: 0;
     }
 
-    &._scroll {
-        .header__wrapper {
-            background-color: rgba($color: $secondary-color, $alpha: 50%);
-        }
-    }
-
     &__content {
         grid-template-areas:
             'n n n n n n n n n action-resized action-resized'
             'burger logo logo menu menu menu menu menu menu action action';
         align-items: center;
+        transition: padding 0.3s ease;
         padding: 60px 15px;
         row-gap: 17.5px;
         display: grid;
 
         @media (max-width: $md2 + px) {
             padding: 22px 15px;
+        }
+    }
+
+    &._scroll {
+        .header__wrapper {
+            background-color: rgba($color: $secondary-color, $alpha: 50%);
+        }
+
+        .header__content {
+            padding: 30px 15px;
         }
     }
 
