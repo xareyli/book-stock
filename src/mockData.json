@@ -1,0 +1,119 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "img": "assets/books/img-1.png",
+            "rating": 3,
+            "name": "Преступники-Сыщики",
+            "author": "Эдгар Уоллес",
+            "year": 1928,
+            "price": 300
+        },
+        {
+            "id": 2,
+            "img": "assets/books/img-2.png",
+            "rating": 5,
+            "name": "Девушка с татуировкой дракона",
+            "author": "Стиг Ларссон",
+            "year": 2005,
+            "price": 2800
+        },
+        {
+            "id": 3,
+            "img": "assets/books/img-3.png",
+            "rating": 5,
+            "name": "Приключения Шерлока Холмса",
+            "author": "Артур Конан Дойл",
+            "year": 1892,
+            "price": 3400
+        },
+        {
+            "id": 4,
+            "img": "assets/books/img-4.png",
+            "rating": 5,
+            "name": "Убийство на улице Морг",
+            "author": "Эдгар Аллан По",
+            "year": 1841,
+            "price": 2650
+        },
+        {
+            "id": 5,
+            "img": "assets/books/img-5.png",
+            "rating": 5,
+            "name": "Вам меня не испугать",
+            "author": "Дженнифер Макмахон",
+            "year": 2013,
+            "price": 1000
+        },
+        {
+            "id": 6,
+            "img": "assets/books/img-6.png",
+            "rating": 5,
+            "name": "Обещания богов",
+            "author": "Жан-Кристофа Гранже",
+            "year": 1939,
+            "price": 850
+        },
+
+        {
+            "id": 7,
+            "img": "assets/books/img-7.png",
+            "rating": 5,
+            "name": "Крестный отец",
+            "author": "Марио Пьзо",
+            "year": 1969,
+            "price": 2890,
+            "salePrice": 2350
+        },
+        {
+            "id": 8,
+            "img": "assets/books/img-8.png",
+            "rating": 5,
+            "name": "Прислуга",
+            "author": "Кэтрин Стокетт",
+            "year": 2009,
+            "price": 3450,
+            "salePrice": 2590
+        },
+        {
+            "id": 9,
+            "img": "assets/books/img-9.png",
+            "rating": 5,
+            "name": "Граф Монте - Кристо",
+            "author": "Александр Дюма",
+            "year": 1846,
+            "price": 4299,
+            "salePrice": 3699
+        },
+        {
+            "id": 10,
+            "img": "assets/books/img-10.png",
+            "rating": 5,
+            "name": "Буря мечей",
+            "author": "Джордж Р. Р.",
+            "year": 2000,
+            "price": 1599,
+            "salePrice": 1000
+        },
+        {
+            "id": 11,
+            "img": "assets/books/img-11.png",
+            "rating": 5,
+            "name": "Унесенные ветром",
+            "author": "Маргарет Митчелл",
+            "year": 1936,
+            "price": 1200,
+            "salePrice": 850
+        },
+        {
+            "id": 12,
+            "img": "assets/books/img-12.png",
+            "rating": 5,
+            "name": "Продажное королевство",
+            "author": "Ли Бардуго",
+            "year": 2016,
+            "price": 3700,
+            "salePrice": 2100
+        }
+    ]
+}

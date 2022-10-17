@@ -1,44 +1,51 @@
 import style from './style.scss';
 
-import img from '../../assets/card-mock.png';
 import IBG from '../ibg';
 
-const BookCard = ({ className, isStock = false }) => (
-    <article class={`${className} ${style.card}`}>
-        <IBG className={style.card__img} img={img} />
+const BookCard = ({ className, number = 0, book, isStock = false }) => {
+    let ratingStars = [];
 
-        <div class={style.card__content}>
-            <div class={style.card__rating}>
-                <div class={style.card__starWrapper}>
-                    <i class={`icon-star ${style.card__star}`} />
-                    <i class={`icon-star ${style.card__star}`} />
-                    <i class={`icon-star ${style.card__star}`} />
-                    <i class={`icon-star ${style.card__star}`} />
-                    <i class={`icon-star ${style.card__star}`} />
+    for (let i = 0; i < book.rating; i++) {
+        ratingStars.push(<i class={`icon-star ${style.card__star}`} />);
+    }
+
+    return (
+        <article class={`${className} ${style.card}`}>
+            <IBG className={style.card__img} img={book.img} />
+
+            <div class={style.card__content}>
+                <div class={style.card__rating}>
+                    <div class={style.card__starWrapper}>{ratingStars.map(item => item)}</div>
+
+                    {isStock ? (
+                        <i class={`icon-heart-empty ${style.card__heart}`} />
+                    ) : (
+                        <span class="rating-number">{number}</span>
+                    )}
                 </div>
 
-                {isStock ? <i class={`icon-heart-empty ${style.card__heart}`} /> : <span class="rating-number">1</span>}
+                <div class={style.card__metaWrapper}>
+                    <span class={style.card__name}>{book.name}</span>
+                    <span class={style.card__author}>Автор: {book.author}</span>
+                    <span class={style.card__year}>{book.year} г</span>
+                </div>
+
+                <div class={style.card__footer}>
+                    <button class={style.card__buyBtn}>Купить</button>
+
+                    <span class={`${style.card__price} ${isStock ? style['card__price--old'] : ''}`}>
+                        {book.price} Р
+                    </span>
+
+                    {isStock ? (
+                        <span class={style.card__newPrice}>{book.salePrice} Р</span>
+                    ) : (
+                        <i class={`${style.card__heart} icon-heart-empty`} />
+                    )}
+                </div>
             </div>
-
-            <div class={style.card__metaWrapper}>
-                <span class={style.card__name}>Девушка с татуировкой дракона</span>
-                <span class={style.card__author}>Автор: Стиг Ларссон</span>
-                <span class={style.card__year}>2005 г</span>
-            </div>
-
-            <div class={style.card__footer}>
-                <button class={style.card__buyBtn}>Купить</button>
-
-                <span class={`${style.card__price} ${isStock ? style['card__price--old'] : ''}`}>2650 Р</span>
-
-                {isStock ? (
-                    <span class={style.card__newPrice}>2350 Р</span>
-                ) : (
-                    <i class={`${style.card__heart} icon-heart-empty`} />
-                )}
-            </div>
-        </div>
-    </article>
-);
+        </article>
+    );
+};
 
 export default BookCard;
