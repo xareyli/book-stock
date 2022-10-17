@@ -104,7 +104,7 @@ const Home = () => (
                             <span class={`${style.contactItem__value} ${style['contactItem__value--icons-list']}`}>
                                 <a href="#">
                                     <i class="icon-instagram" />
-                                </a>{' '}
+                                </a>
                                 <a href="#">
                                     <i class="icon-tiktok" />
                                 </a>

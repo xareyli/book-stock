@@ -1,0 +1,24 @@
+.popup {
+    background-color: rgba($color: #000, $alpha: 70%);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    position: fixed;
+    z-index: 500;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+
+    &--shown {
+        pointer-events: visible;
+        opacity: 1;
+    }
+
+    &__content {
+        transform: translate(-50%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+    }
+}

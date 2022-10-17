@@ -1,0 +1,66 @@
+@import '../../style/inc';
+
+.authBlock {
+    @include adaptive-value('padding-bottom', 85, 40, 1);
+    @include adaptive-value('padding-right', 80, 37, 1);
+    @include adaptive-value('padding-left', 80, 37, 1);
+    @include adaptive-value('padding-top', 85, 40, 1);
+
+    background-color: $std-bg;
+
+    &__title {
+        @include adaptive-value('margin-bottom', 100, 60, 1);
+        @include adaptive-value('font-size', 50, 30, 1);
+
+        text-align: center;
+        font-weight: 800;
+        display: block;
+    }
+
+    &__fields {
+        @include adaptive-value('row-gap', 40, 24, 1);
+
+        flex-direction: column;
+        display: flex;
+    }
+
+    &__btn {
+        @include adaptive-value('margin-top', 40, 35, 1);
+
+        width: 100%;
+    }
+
+    &__switchMode {
+        @include adaptive-value('font-size', 18, 14, 1);
+
+        text-align: center;
+        line-height: 1.25;
+        margin-top: 25px;
+        display: block;
+
+        button {
+            text-decoration: underline;
+        }
+    }
+}
+
+.field {
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+    align-items: center;
+    display: flex;
+
+    &__icon {
+        margin-right: 20px;
+        font-size: 24px;
+    }
+
+    &__input {
+        @include adaptive-value('font-size', 25, 16, 1);
+
+        color: #777;
+        background: 0;
+        outline: 0;
+        border: 0;
+    }
+}
