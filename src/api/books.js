@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getBooks = async ({ search = false, genres = [], sortType = '', onSale = false } = {}) =>
+export const getBooks = ({ search = false, genres = [], sortType = false, price = false, onSale = false } = {}) =>
     new Promise(resolve => {
         // Delay for testing purposes
         setTimeout(async () => {
@@ -10,6 +10,7 @@ export const getBooks = async ({ search = false, genres = [], sortType = '', onS
             paramsQuery += search ? `search=${search}&` : '';
             paramsQuery += onSale ? `onSale=true&` : '';
             paramsQuery += sortType ? `sortType=${sortType}&` : '';
+            paramsQuery += price ? `fromPrice=${price[0]}&toPrice=${price[1]}&` : '';
 
             paramsQuery = paramsQuery.slice(0, -1);
 

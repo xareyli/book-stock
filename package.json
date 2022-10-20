@@ -53,6 +53,7 @@
         "preact": "^10.3.2",
         "preact-render-to-string": "^5.1.4",
         "preact-router": "^3.2.1",
+        "react-range": "^1.8.14",
         "react-redux": "^8.0.4",
         "redux": "^4.2.0"
     },

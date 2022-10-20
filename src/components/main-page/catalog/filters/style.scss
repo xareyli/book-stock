@@ -138,3 +138,31 @@
         width: 22px;
     }
 }
+
+.priceSlider {
+    &__sliderContainer {
+        display: flex;
+        height: 36px;
+        width: 100%;
+    }
+
+    &__center {
+        border-radius: 4px;
+        align-self: center;
+        height: 10px;
+        width: 100%;
+    }
+
+    &__labels {
+        justify-content: space-between;
+        margin-top: 10px;
+        display: flex;
+    }
+
+    &__thumb {
+        background-color: #000;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        width: 15px;
+    }
+}

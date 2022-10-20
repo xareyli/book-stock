@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'preact/hooks';
+import { getTrackBackground, Range } from 'react-range';
 import style from './style.scss';
 
-const PriceForm = ({ className, gonnaOpenModal }) => {
+const PriceForm = ({ className, gonnaOpenModal, minPrice, maxPrice, rangeValues, setRangeValues }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const beforeOpenModalListener = useCallback(() => {
@@ -43,7 +44,48 @@ const PriceForm = ({ className, gonnaOpenModal }) => {
                 <button class={style.formOption__closeModal} onClick={() => setIsModalOpen(false)} />
             </div>
 
-            <div class={`${style.priceForm__slider} ${style.formOption__content}`}>slider</div>
+            <div class={`${style.priceForm__slider} ${style.formOption__content} ${style.priceSlider}`}>
+                <Range
+                    draggableTrack
+                    values={rangeValues}
+                    step={1}
+                    min={minPrice}
+                    max={maxPrice}
+                    onChange={values => setRangeValues(values)}
+                    renderTrack={({ props, children }) => (
+                        <div
+                            onMouseDown={props.onMouseDown}
+                            onTouchStart={props.onTouchStart}
+                            class={style.priceSlider__sliderContainer}
+                            style={{
+                                ...props.style,
+                            }}
+                        >
+                            <div
+                                ref={props.ref}
+                                class={style.priceSlider__center}
+                                style={{
+                                    background: getTrackBackground({
+                                        values: rangeValues,
+                                        colors: ['#2D2D2D', '#0A62A9', '#2D2D2D'],
+                                        min: minPrice,
+                                        max: maxPrice,
+                                        rtl: false,
+                                    }),
+                                }}
+                            >
+                                {children}
+                            </div>
+                        </div>
+                    )}
+                    renderThumb={({ props }) => <div {...props} class={style.priceSlider__thumb} />}
+                />
+
+                <div class={style.priceSlider__labels}>
+                    <span>{rangeValues[0]} Р</span>
+                    <span>{rangeValues[1]} Р</span>
+                </div>
+            </div>
         </div>
     );
 };

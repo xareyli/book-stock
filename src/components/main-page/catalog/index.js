@@ -15,6 +15,7 @@ const initialState = {
     genres: [],
     search: '',
     sortType: Object.keys(sortTypes)[0],
+    price: [300, 4300],
 };
 
 const productSettingsReducer = (state = initialState, action) => {
@@ -28,6 +29,9 @@ const productSettingsReducer = (state = initialState, action) => {
         case 'changeSort':
             return { ...state, sortType: action.payload };
 
+        case 'changePrice':
+            return { ...state, price: action.payload };
+
         default:
             return state;
     }
@@ -38,16 +42,16 @@ const Catalog = ({ className }) => {
     const [productSettings, dispatch] = useReducer(productSettingsReducer, initialState);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchBooksRaw = useCallback(async (search, genres, sortType) => {
-        setProducts(await getBooks({ search, genres, sortType }));
+    const fetchBooksRaw = useCallback(async (search, genres, sortType, price) => {
+        setProducts(await getBooks({ search, genres, sortType, price }));
         setIsLoading(false);
-    });
+    }, []);
 
     const fetchBooks = useCallback(throttle(fetchBooksRaw, 500), []);
 
     useEffect(() => {
         setIsLoading(true);
-        fetchBooks(productSettings.search, productSettings.genres, productSettings.sortType);
+        fetchBooks(productSettings.search, productSettings.genres, productSettings.sortType, productSettings.price);
     }, [productSettings]);
 
     /**
@@ -67,6 +71,10 @@ const Catalog = ({ className }) => {
                                 className={`${style.catalog__filters} ${style.filters}`}
                                 genres={productSettings.genres}
                                 setGenres={newGenres => dispatch({ type: 'changeGenres', payload: newGenres })}
+                                priceValues={productSettings.price}
+                                setPriceValues={newPriceValues =>
+                                    dispatch({ type: 'changePrice', payload: newPriceValues })
+                                }
                             />
                         }
                     </div>

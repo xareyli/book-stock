@@ -11,7 +11,7 @@ const Stock = ({ className }) => {
 
     useEffect(() => {
         async function fetchBooks() {
-            setProducts(await getBooks({ isStock: true }));
+            setProducts(await getBooks({ onSale: true }));
             setIsLoading(false);
         }
 

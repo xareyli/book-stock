@@ -52,6 +52,26 @@ export default function startMockServer() {
                     }
                 }
 
+                if (req.queryParams.fromPrice) {
+                    const fromPrice = req.queryParams.fromPrice;
+
+                    answear = answear.filter(item => {
+                        const itemPrice = item.salePrice ? item.salePrice : item.price;
+
+                        return itemPrice >= fromPrice;
+                    });
+                }
+
+                if (req.queryParams.toPrice) {
+                    const toPrice = req.queryParams.toPrice;
+
+                    answear = answear.filter(item => {
+                        const itemPrice = item.salePrice ? item.salePrice : item.price;
+
+                        return itemPrice <= toPrice;
+                    });
+                }
+
                 return answear.slice(0, 6);
             });
         },
