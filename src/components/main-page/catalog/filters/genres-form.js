@@ -1,7 +1,19 @@
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import style from './style.scss';
 
-const GenresForm = ({ className, gonnaOpenModal }) => {
+/**
+ * @TODO move genres to another file
+ */
+const standardGenres = {
+    detective: 'Детективы',
+    roman: 'Романы',
+    science: 'Научные',
+    classic: 'Классика',
+    history: 'Исторические',
+    psychological: 'Психологические',
+};
+
+const GenresForm = ({ className, genres, setGenres, gonnaOpenModal }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const beforeOpenModalListener = useCallback(() => {
@@ -16,9 +28,15 @@ const GenresForm = ({ className, gonnaOpenModal }) => {
         };
     }, []);
 
-    /**
-     * @TODO move genres to redux
-     */
+    const onSetGenre = useCallback(genre => {
+        if (genres.includes(genre)) {
+            const newGenres = JSON.parse(JSON.stringify(genres)).filter(item => item !== genre);
+
+            setGenres(newGenres);
+        } else {
+            setGenres([...genres, genre]);
+        }
+    });
 
     return (
         <div
@@ -48,41 +66,14 @@ const GenresForm = ({ className, gonnaOpenModal }) => {
             </div>
 
             <div class={`${style.genreForm__list} ${style.formOption__content}`}>
-                <label class={style.genreForm__item}>
-                    <input type="checkbox" />
-                    <i class="icon-checkmark" />
-                    Детективы
-                </label>
+                {Object.keys(standardGenres).map(key => (
+                    <label key={key} class={style.genreForm__item} onClick={() => onSetGenre(key)}>
+                        <input type="checkbox" />
+                        <i class="icon-checkmark" />
 
-                <label class={style.genreForm__item}>
-                    <input type="checkbox" />
-                    <i class="icon-checkmark" />
-                    Романы
-                </label>
-
-                <label class={style.genreForm__item}>
-                    <input type="checkbox" />
-                    <i class="icon-checkmark" />
-                    Научные
-                </label>
-
-                <label class={style.genreForm__item}>
-                    <input type="checkbox" />
-                    <i class="icon-checkmark" />
-                    Классика
-                </label>
-
-                <label class={style.genreForm__item}>
-                    <input type="checkbox" />
-                    <i class="icon-checkmark" />
-                    Исторические
-                </label>
-
-                <label class={style.genreForm__item}>
-                    <input type="checkbox" />
-                    <i class="icon-checkmark" />
-                    Психологические
-                </label>
+                        {standardGenres[key]}
+                    </label>
+                ))}
             </div>
         </div>
     );

@@ -9,6 +9,12 @@ const BookCard = ({ className, number = 0, book, isStock = false }) => {
         ratingStars.push(<i class={`icon-star ${style.card__star}`} />);
     }
 
+    /**
+     * @TODO add empty stars
+     */
+    /**
+     * @TODO fix card content layout
+     */
     return (
         <article class={`${className} ${style.card}`}>
             <IBG className={style.card__img} img={book.img} />
