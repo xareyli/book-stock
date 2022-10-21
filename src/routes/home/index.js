@@ -8,6 +8,7 @@ import BlockTitle from '../../components/block-title';
 import Button from '../../components/button';
 import DescribedImage from '../../components/described-image';
 import Catalog from '../../components/main-page/catalog';
+import SectionTemplate from '../../components/main-page/section-template';
 import Stock from '../../components/main-page/stock';
 
 const Home = () => (
@@ -41,28 +42,19 @@ const Home = () => (
 
         <Catalog className={style.homeSection} />
 
-        <section class={`${style.homeSection} ${style.cafeteria}`}>
-            <div class="_container">
-                <BlockTitle>КОФЕЙНЯ</BlockTitle>
-                <br />
-                <DescribedImage
-                    text="Что может быть приятнее, чем, устроившись поудобнее с чашечкой кофе в руках,
+        <SectionTemplate title="КОФЕЙНЯ">
+            <br />
+            <DescribedImage
+                text="Что может быть приятнее, чем, устроившись поудобнее с чашечкой кофе в руках,
                         почитать часок-другой книгу? Именно у нас вы сможете не только вкусно поесть,
                         но и уделить время чтению книг,
                         в изобилии разместившихся на полках. Места хватит для всех, так как у нас есть целых три зала!"
-                    linkText="Больше информации"
-                    img={cafeteriaImg}
-                />
-            </div>
-        </section>
+                linkText="Больше информации"
+                img={cafeteriaImg}
+            />
+        </SectionTemplate>
 
-        <section class={`${style.homeSection} ${style.stock}`}>
-            <div class="_container">
-                <BlockTitle>АКЦИИ</BlockTitle>
-
-                <Stock className={style.stock__content} />
-            </div>
-        </section>
+        <Stock className={style.stock__content} />
 
         <section class={`${style.homeSection} ${style.contacts}`}>
             <div class="_container">

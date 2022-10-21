@@ -4,6 +4,7 @@ import style from './style.scss';
 import { getBooks } from '../../../api/books';
 import BookCard from '../../book-card';
 import Pagination from '../../pagination';
+import SectionTemplate from '../section-template';
 
 const Stock = ({ className }) => {
     const [products, setProducts] = useState([]);
@@ -20,7 +21,7 @@ const Stock = ({ className }) => {
     }, []);
 
     return (
-        <>
+        <SectionTemplate title="АКЦИИ">
             <div class={`${style.grid} ${className}`}>
                 {products.map(item => (
                     <BookCard key={item.id} className={style.grid__item} book={item} isStock />
@@ -30,7 +31,7 @@ const Stock = ({ className }) => {
             </div>
 
             <Pagination className={style.stock__pagination} />
-        </>
+        </SectionTemplate>
     );
 };
 

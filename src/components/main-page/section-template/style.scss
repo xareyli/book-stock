@@ -1,0 +1,5 @@
+@import '../../../style/inc';
+
+.homeSection {
+    @include adaptive-value('padding-top', 110, 75, 1);
+}
