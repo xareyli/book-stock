@@ -14,6 +14,7 @@ const Filters = ({ className, reducer }) => {
             if (catalogState.filters?.genres?.join() !== formObj?.genres?.join()) {
                 delete formObj.fromPrice;
                 delete formObj.toPrice;
+                catalogDispatch({ type: 'setPriceRange', payload: [0, 1] });
             }
 
             catalogDispatch({ type: 'setFilters', payload: formObj });

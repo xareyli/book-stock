@@ -47,10 +47,6 @@
     &__list {
         flex-direction: column;
         display: flex;
-
-        @media (max-width: $md4 + px) {
-            display: none;
-        }
     }
 
     &__item {
@@ -156,6 +152,7 @@
     &__labels {
         justify-content: space-between;
         margin-top: 10px;
+        column-gap: 60px;
         display: flex;
     }
 

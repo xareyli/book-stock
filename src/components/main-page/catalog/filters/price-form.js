@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'preact/hooks';
+import { useState, useEffect, useCallback } from 'preact/hooks';
 import { Field } from 'react-final-form';
 import { getTrackBackground, Range } from 'react-range';
 import style from './style.scss';
@@ -6,24 +6,18 @@ import style from './style.scss';
 const PriceForm = ({ minPrice, maxPrice, form }) => {
     const [rangeValues, setRangeValues] = useState([minPrice, maxPrice]);
 
-    const formElement = useRef(null);
-
     useEffect(() => {
-        setRangeValues([minPrice, maxPrice]);
+        if (minPrice !== maxPrice) setRangeValues([minPrice, maxPrice]);
+        else setRangeValues([minPrice - 1, maxPrice + 1]);
     }, [minPrice, maxPrice]);
 
-    const onRangeChanges = useCallback(
-        values => {
-            setRangeValues(values);
+    const onRangeChanges = useCallback(values => {
+        setRangeValues(values);
 
-            if (formElement.current) {
-                form.change('fromPrice', values[0]);
-                form.change('toPrice', values[1]);
-                form.submit();
-            }
-        },
-        [formElement.current],
-    );
+        form.change('fromPrice', values[0]);
+        form.change('toPrice', values[1]);
+        form.submit();
+    }, []);
 
     return (
         <div class={style.priceSlider}>
@@ -47,7 +41,7 @@ const PriceForm = ({ minPrice, maxPrice, form }) => {
                                         ...props.style,
                                     }}
                                 >
-                                    <input ref={formElement} {...input} type="hidden" />
+                                    <input {...input} type="hidden" />
                                     <div
                                         ref={props.ref}
                                         class={style.priceSlider__center}
