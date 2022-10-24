@@ -2,6 +2,7 @@ import { useCallback } from 'preact/hooks';
 import { Form } from 'react-final-form';
 
 import GenresForm from './genres-form';
+import OptionWrapper from './option-wrapper';
 import PriceForm from './price-form';
 import style from './style.scss';
 
@@ -32,15 +33,17 @@ const Filters = ({ className, reducer }) => {
             subscription={{ submitting: true }}
             render={({ handleSubmit, form }) => (
                 <form class={`${className} ${style.filters}`} onChange={handleSubmit} onSubmit={handleSubmit}>
-                    <PriceForm
-                        className={style.filters__item}
-                        gonnaOpenModal={gonnaOpenModal}
-                        minPrice={catalogState.priceRange[0]}
-                        maxPrice={catalogState.priceRange[1]}
-                        form={form}
-                    />
+                    <OptionWrapper title="Цена" gonnaOpenModal={gonnaOpenModal}>
+                        <PriceForm
+                            minPrice={catalogState.priceRange[0]}
+                            maxPrice={catalogState.priceRange[1]}
+                            form={form}
+                        />
+                    </OptionWrapper>
 
-                    <GenresForm className={style.filters__item} gonnaOpenModal={gonnaOpenModal} />
+                    <OptionWrapper title="Жанр" gonnaOpenModal={gonnaOpenModal}>
+                        <GenresForm />
+                    </OptionWrapper>
                 </form>
             )}
         />
