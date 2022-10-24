@@ -31,12 +31,6 @@ export default function startMockServer() {
                     answear = filterGenres(answear, genresArray);
                 }
 
-                if (req.queryParams.search) {
-                    const searchQuery = req.queryParams.search;
-
-                    answear = answear.filter(item => item.name.toLowerCase().includes(searchQuery));
-                }
-
                 if (req.queryParams.sortType) {
                     const sortType = req.queryParams.sortType;
 
@@ -50,6 +44,30 @@ export default function startMockServer() {
                             return priceB - priceA;
                         });
                     }
+                }
+
+                let booksPriceRange = null;
+
+                if (answear.length) {
+                    const fillerPrice = answear[0].salePrice ? answear[0].salePrice : answear[0].price;
+
+                    booksPriceRange = [fillerPrice, fillerPrice];
+
+                    for (let book of answear) {
+                        const bookPrice = book.salePrice ? book.salePrice : book.price;
+
+                        if (bookPrice < booksPriceRange[0]) {
+                            booksPriceRange[0] = bookPrice;
+                        } else if (bookPrice > booksPriceRange[1]) {
+                            booksPriceRange[1] = bookPrice;
+                        }
+                    }
+                }
+
+                if (req.queryParams.search) {
+                    const searchQuery = req.queryParams.search;
+
+                    answear = answear.filter(item => item.name.toLowerCase().includes(searchQuery));
                 }
 
                 if (req.queryParams.fromPrice) {
@@ -72,7 +90,10 @@ export default function startMockServer() {
                     });
                 }
 
-                return answear.slice(0, 6);
+                return {
+                    booksPriceRange,
+                    books: answear.slice(0, 6),
+                };
             });
         },
     });

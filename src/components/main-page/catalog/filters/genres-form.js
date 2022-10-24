@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'preact/hooks';
+import { Field } from 'react-final-form';
 import style from './style.scss';
 
 /**
@@ -13,7 +14,7 @@ const standardGenres = {
     psychological: 'Психологические',
 };
 
-const GenresForm = ({ className, genres, setGenres, gonnaOpenModal }) => {
+const GenresForm = ({ className, gonnaOpenModal }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const beforeOpenModalListener = useCallback(() => {
@@ -27,16 +28,6 @@ const GenresForm = ({ className, genres, setGenres, gonnaOpenModal }) => {
             window.removeEventListener('beforeOpenModal', beforeOpenModalListener);
         };
     }, []);
-
-    const onSetGenre = useCallback(genre => {
-        if (genres.includes(genre)) {
-            const newGenres = JSON.parse(JSON.stringify(genres)).filter(item => item !== genre);
-
-            setGenres(newGenres);
-        } else {
-            setGenres([...genres, genre]);
-        }
-    });
 
     return (
         <div
@@ -67,12 +58,20 @@ const GenresForm = ({ className, genres, setGenres, gonnaOpenModal }) => {
 
             <div class={`${style.genreForm__list} ${style.formOption__content}`}>
                 {Object.keys(standardGenres).map(key => (
-                    <label key={key} class={style.genreForm__item} onClick={() => onSetGenre(key)}>
-                        <input type="checkbox" />
-                        <i class="icon-checkmark" />
+                    <Field
+                        key={key}
+                        name="genres"
+                        value={key}
+                        type="checkbox"
+                        render={({ input }) => (
+                            <label class={style.genreForm__item}>
+                                <input {...input} type="checkbox" />
+                                <i class="icon-checkmark" />
 
-                        {standardGenres[key]}
-                    </label>
+                                {standardGenres[key]}
+                            </label>
+                        )}
+                    />
                 ))}
             </div>
         </div>

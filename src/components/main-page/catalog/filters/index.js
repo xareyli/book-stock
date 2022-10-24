@@ -1,8 +1,25 @@
+import { useCallback } from 'preact/hooks';
+import { Form } from 'react-final-form';
+
 import GenresForm from './genres-form';
 import PriceForm from './price-form';
 import style from './style.scss';
 
-const Filters = ({ className, genres, setGenres, priceValues, setPriceValues }) => {
+const Filters = ({ className, reducer }) => {
+    const [catalogState, catalogDispatch] = reducer;
+
+    const setFilters = useCallback(
+        formObj => {
+            if (catalogState.filters?.genres?.join() !== formObj?.genres?.join()) {
+                delete formObj.fromPrice;
+                delete formObj.toPrice;
+            }
+
+            catalogDispatch({ type: 'setFilters', payload: formObj });
+        },
+        [catalogState],
+    );
+
     function gonnaOpenModal() {
         const beforeOpenModalEvent = new Event('beforeOpenModal');
 
@@ -10,23 +27,23 @@ const Filters = ({ className, genres, setGenres, priceValues, setPriceValues }) 
     }
 
     return (
-        <form class={`${className} ${style.filters}`} onSubmit={e => e.preventDefault()}>
-            <PriceForm
-                className={style.filters__item}
-                gonnaOpenModal={gonnaOpenModal}
-                minPrice={300}
-                maxPrice={4300}
-                rangeValues={priceValues}
-                setRangeValues={setPriceValues}
-            />
+        <Form
+            onSubmit={setFilters}
+            subscription={{ submitting: true }}
+            render={({ handleSubmit, form }) => (
+                <form class={`${className} ${style.filters}`} onChange={handleSubmit} onSubmit={handleSubmit}>
+                    <PriceForm
+                        className={style.filters__item}
+                        gonnaOpenModal={gonnaOpenModal}
+                        minPrice={catalogState.priceRange[0]}
+                        maxPrice={catalogState.priceRange[1]}
+                        form={form}
+                    />
 
-            <GenresForm
-                className={style.filters__item}
-                gonnaOpenModal={gonnaOpenModal}
-                genres={genres}
-                setGenres={setGenres}
-            />
-        </form>
+                    <GenresForm className={style.filters__item} gonnaOpenModal={gonnaOpenModal} />
+                </form>
+            )}
+        />
     );
 };
 

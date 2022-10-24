@@ -12,7 +12,7 @@ const Stock = ({ className }) => {
 
     useEffect(() => {
         async function fetchBooks() {
-            setProducts(await getBooks({ onSale: true }));
+            setProducts((await getBooks({ onSale: true })).books);
             setIsLoading(false);
         }
 

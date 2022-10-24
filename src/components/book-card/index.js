@@ -2,8 +2,10 @@ import style from './style.scss';
 
 import IBG from '../ibg';
 
-const BookCard = ({ className, number = 0, book, isStock = false }) => {
+const BookCard = ({ className, number = 0, book }) => {
     let ratingStars = [];
+
+    const isStock = book.salePrice;
 
     for (let i = 0; i < book.rating; i++) {
         ratingStars.push(<i class={`icon-star ${style.card__star}`} />);
