@@ -1,6 +1,7 @@
 @import '../../style/inc';
 
 .pagination {
+    user-select: none;
     text-align: end;
     font-size: 0;
 
@@ -20,6 +21,7 @@
         cursor: pointer;
         padding: 5px 0;
 
+        &--active,
         &:hover {
             background-color: $primary-color;
             outline: 1px solid $secondary-color;

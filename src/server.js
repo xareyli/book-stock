@@ -67,7 +67,7 @@ export default function startMockServer() {
                 if (req.queryParams.search) {
                     const searchQuery = req.queryParams.search;
 
-                    answear = answear.filter(item => item.name.toLowerCase().includes(searchQuery));
+                    answear = answear.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
                 }
 
                 if (req.queryParams.fromPrice) {
@@ -90,9 +90,20 @@ export default function startMockServer() {
                     });
                 }
 
+                let answearPaginated = [];
+
+                if (req.queryParams.page && req.queryParams.perPage) {
+                    const page = +req.queryParams.page;
+                    const perPage = +req.queryParams.perPage;
+                    const offset = page * perPage - perPage;
+
+                    answearPaginated = answear.slice(offset, offset + perPage);
+                }
+
                 return {
                     booksPriceRange,
-                    books: answear.slice(0, 6),
+                    totalCount: answear.length,
+                    books: answearPaginated.length ? answearPaginated : answear.slice(0, 6),
                 };
             });
         },

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getBooks = ({ search = false, sortType = false, filters = {}, onSale = false } = {}) =>
+export const getBooks = ({ search = false, sortType = false, filters = {}, pagination = {}, onSale = false } = {}) =>
     new Promise(resolve => {
         // Delay for testing purposes
         setTimeout(async () => {
@@ -9,6 +9,7 @@ export const getBooks = ({ search = false, sortType = false, filters = {}, onSal
             paramsQuery += search ? `search=${search}&` : '';
             paramsQuery += sortType ? `sortType=${sortType}&` : '';
             paramsQuery += onSale ? `onSale=true&` : '';
+            paramsQuery += pagination ? `page=${pagination.page}&perPage=${pagination.perPage}&` : '';
 
             for (const filterKey in filters) {
                 const filterValue = filters[filterKey];
