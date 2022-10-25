@@ -7,16 +7,14 @@ const BookCard = ({ className, number = 0, book }) => {
 
     const isStock = book.salePrice;
 
-    for (let i = 0; i < book.rating; i++) {
-        ratingStars.push(<i class={`icon-star ${style.card__star}`} />);
+    for (let i = 0; i < 5; i++) {
+        if (i < book.rating) {
+            ratingStars.push(<i class={`icon-star ${style.card__star}`} />);
+        } else {
+            ratingStars.push(<i class={`icon-star-empty ${style.card__star} ${style['card__star--empty']}`} />);
+        }
     }
 
-    /**
-     * @TODO add empty stars
-     */
-    /**
-     * @TODO fix card content layout
-     */
     return (
         <article class={`${className} ${style.card}`}>
             <IBG className={style.card__img} img={book.img} />

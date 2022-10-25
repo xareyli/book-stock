@@ -1,17 +1,7 @@
 import { Field } from 'react-final-form';
 import style from './style.scss';
 
-/**
- * @TODO move genres to another file
- */
-const standardGenres = {
-    detective: 'Детективы',
-    roman: 'Романы',
-    science: 'Научные',
-    classic: 'Классика',
-    history: 'Исторические',
-    psychological: 'Психологические',
-};
+import standardGenres from '../../../../constants/genres';
 
 const GenresForm = ({}) => (
     <div class={style.genreForm__list}>
