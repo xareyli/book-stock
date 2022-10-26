@@ -35,7 +35,7 @@ export default function startMockServer() {
                     const sortType = req.queryParams.sortType;
 
                     if (sortType === 'popular') {
-                        answear = answear.sort((a, b) => b.rating - a.rating);
+                        answear = answear.sort((a, b) => a.ratingNumber - b.ratingNumber);
                     } else if (sortType === 'price') {
                         answear = answear.sort((a, b) => {
                             let priceA = a.salePrice ? a.salePrice : a.price;
@@ -105,6 +105,12 @@ export default function startMockServer() {
                     totalCount: answear.length,
                     books: answearPaginated.length ? answearPaginated : answear.slice(0, 6),
                 };
+            });
+
+            this.get('/book/:id', (res, req) => {
+                const id = +req.params.id;
+
+                return mockData.books.find(item => item.id === id);
             });
         },
     });

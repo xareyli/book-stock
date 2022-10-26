@@ -28,3 +28,13 @@ export const getBooks = ({ search = false, sortType = false, filters = {}, pagin
             resolve(promise.data);
         }, 0);
     });
+
+export const getOneBook = (id) =>
+    new Promise(resolve => {
+        // Delay for testing purposes
+        setTimeout(async () => {
+            const promise = await axios.get(`/api/book/${id}`);
+
+            resolve(promise.data);
+        }, 1000);
+    });

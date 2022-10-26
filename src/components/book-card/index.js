@@ -1,8 +1,9 @@
 import style from './style.scss';
 
 import IBG from '../ibg';
+import { Link } from 'preact-router/match';
 
-const BookCard = ({ className, number = 0, book }) => {
+const BookCard = ({ className, book }) => {
     let ratingStars = [];
 
     const isStock = book.salePrice;
@@ -17,7 +18,9 @@ const BookCard = ({ className, number = 0, book }) => {
 
     return (
         <article class={`${className} ${style.card}`}>
-            <IBG className={style.card__img} img={book.img} />
+            <Link href={`/book/${book.id}`}>
+                <IBG className={style.card__img} img={book.img} />
+            </Link>
 
             <div class={style.card__content}>
                 <div class={style.card__rating}>
@@ -26,7 +29,7 @@ const BookCard = ({ className, number = 0, book }) => {
                     {isStock ? (
                         <i class={`icon-heart-empty ${style.card__heart}`} />
                     ) : (
-                        <span class="rating-number">{number}</span>
+                        <span class="rating-number">{book.ratingNumber}</span>
                     )}
                 </div>
 

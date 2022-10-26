@@ -7,6 +7,7 @@ import { setupStore } from '../redux/store';
 
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home';
+import Book from '../routes/book';
 
 const store = setupStore();
 
@@ -16,6 +17,7 @@ const App = () => (
             <Header />
             <Router>
                 <Home path="/" />
+                <Book path="/book/:id" />
             </Router>
         </Provider>
     </div>
