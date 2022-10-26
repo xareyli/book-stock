@@ -1,3 +1,4 @@
+import { Link } from 'preact-router/match';
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import style from './style.scss';
 
@@ -46,7 +47,7 @@ const Header = () => {
                         <nav class={`${style.header__nav} ${style.navigation}`}>
                             <ul class={style.navigation__list}>
                                 <li class={style.navigation__item}>
-                                    <a href="#">Главная</a>
+                                    <Link href="/">Главная</Link>
                                 </li>
                                 <li class={style.navigation__item}>
                                     <a href="#">Каталог</a>
