@@ -6,8 +6,9 @@ import Header from './header';
 import { setupStore } from '../redux/store';
 
 // Code-splitting is automated for `routes` directory
-import Home from '../routes/home';
 import Book from '../routes/book';
+import Cafeteria from '../routes/cafeteria';
+import Home from '../routes/home';
 
 const store = setupStore();
 
@@ -18,6 +19,7 @@ const App = () => (
             <Router>
                 <Home path="/" />
                 <Book path="/book/:id" />
+                <Cafeteria path="/cafeteria" />
             </Router>
         </Provider>
     </div>

@@ -1,0 +1,14 @@
+@import '../../style/inc';
+
+.page {
+    padding-top: 200px;
+    min-height: 100vh;
+
+    @media (max-width: $md3 + px) {
+        padding-top: 100px;
+    }
+}
+
+.section {
+    @include adaptive-value('margin-bottom', 115, 50, 1);
+}

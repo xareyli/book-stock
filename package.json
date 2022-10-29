@@ -57,7 +57,8 @@
         "react-final-form": "^6.5.9",
         "react-range": "^1.8.14",
         "react-redux": "^8.0.4",
-        "redux": "^4.2.0"
+        "redux": "^4.2.0",
+        "swiper": "^8.4.4"
     },
     "jest": {
         "preset": "jest-preset-preact",

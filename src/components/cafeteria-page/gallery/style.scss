@@ -1,0 +1,54 @@
+@import '../../../style/inc';
+
+.galleryWrapper {
+    position: relative;
+
+    @media (min-width: $md3 + px) {
+        // arrows padding
+        padding: 0 50px;
+    }
+
+    @media (min-width: $md1 + 120 + px) {
+        padding: 0;
+    }
+}
+
+.gallery {
+    width: 100%;
+
+    &__img {
+        aspect-ratio: 454/293;
+        width: 100%;
+    }
+
+    &__arrow {
+        @include adaptive-value('font-size', 45, 20, 1);
+
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+
+        &--prev {
+            left: 0;
+        }
+
+        &--next {
+            transform: rotate(180deg);
+            right: 0;
+        }
+
+        @media (min-width: $md1 + 120 + px) {
+            &--prev {
+                left: -60px;
+            }
+
+            &--next {
+                right: -60px;
+            }
+        }
+
+        @media (max-width: $md3 + px) {
+            display: none;
+        }
+    }
+}

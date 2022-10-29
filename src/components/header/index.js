@@ -53,7 +53,7 @@ const Header = () => {
                                     <a href="#">Каталог</a>
                                 </li>
                                 <li class={style.navigation__item}>
-                                    <a href="#">Кофейня</a>
+                                    <Link href="/cafeteria">Кофейня</Link>
                                 </li>
                                 <li class={style.navigation__item}>
                                     <a href="#">Акции</a>
