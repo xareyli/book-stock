@@ -1,0 +1,82 @@
+@import "../../../style/inc";
+
+.table {
+  flex-direction: column;
+  max-width: 715px;
+  display: flex;
+  width: 100%;
+
+  &__head {
+    align-items: flex-end;
+  }
+
+  &__row {
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+  }
+
+  &__row,
+  &__head {
+    display: flex;
+
+    &:not(:last-child) {
+      @include adaptive-value("margin-bottom", 40, 20, 1);
+    }
+  }
+
+  &__headerCellWrapper {
+    flex-direction: column;
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__coffeeCup {
+    aspect-ratio: 42/52;
+    margin-bottom: 10px;
+
+    &--small {
+      @include adaptive-value("width", 33, 21, 1);
+    }
+
+    &--medium {
+      @include adaptive-value("width", 38, 23, 1);
+    }
+
+    &--large {
+      @include adaptive-value("width", 43, 28, 1);
+    }
+  }
+
+  &__cell {
+    @include adaptive-value("font-size", 20, 10, 1);
+
+    font-weight: 300;
+    text-align: end;
+    flex: 0 0 20%;
+
+    &--wide {
+      @include adaptive-value("font-size", 25, 12, 1);
+
+      text-align: start;
+      font-weight: 300;
+      flex: 0 0 40%;
+    }
+
+    @media (max-width: $md4 + px) {
+      text-align: center;
+      flex: 0 0 23.333%;
+
+      &--wide {
+        text-align: start;
+        flex: 0 0 30%;
+      }
+    }
+  }
+
+  &__title {
+    @include adaptive-value("font-size", 30, 16, 1);
+
+    font-weight: 500;
+  }
+}

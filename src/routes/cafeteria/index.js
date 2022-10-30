@@ -7,6 +7,8 @@ import BlockTitle from '../../components/block-title';
 
 import Gallery from '../../components/cafeteria-page/gallery';
 import DescribedImage from '../../components/described-image';
+import Coffies from '../../components/cafeteria-page/coffies';
+import Desserts from '../../components/cafeteria-page/desserts';
 
 const Cafeteria = () => (
     <main class={`${style.page} _ibg`} style={{ backgroundImage: `url(${pageBg})` }}>
@@ -29,6 +31,16 @@ const Cafeteria = () => (
                 <BlockTitle color="white">НАШИ ФОТОСТОКИ</BlockTitle>
 
                 <Gallery />
+            </div>
+        </section>
+
+        <section class={style.section}>
+            <div class="_container">
+                <BlockTitle color="white">МЕНЮ</BlockTitle>
+
+                <Coffies className={style.section__coffies} />
+
+                <Desserts className={style.section__desserts} />
             </div>
         </section>
     </main>

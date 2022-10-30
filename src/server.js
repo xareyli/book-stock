@@ -112,6 +112,26 @@ export default function startMockServer() {
 
                 return mockData.books.find(item => item.id === id);
             });
+
+            this.get('/coffies', (res, req) => {
+                let coffies = mockData.coffies;
+
+                if (req.queryParams.count) {
+                    coffies = coffies.slice(0, +req.queryParams.count);
+                }
+
+                return coffies;
+            });
+
+            this.get('/desserts', (res, req) => {
+                let desserts = mockData.desserts;
+
+                if (req.queryParams.count) {
+                    desserts = desserts.slice(0, +req.queryParams.count);
+                }
+
+                return desserts;
+            });
         },
     });
 }

@@ -1,0 +1,38 @@
+@import '../../../style/inc';
+
+.title {
+    @include adaptive-value('font-size', 30, 16, 1);
+    font-weight: 500;
+}
+
+.table {
+    @include adaptive-value('margin-top', 50, 25, 1);
+    max-width: 715px;
+    width: 100%;
+
+    &__row {
+        border-bottom: 1px solid white;
+        padding-bottom: 7px;
+        display: flex;
+
+        &:not(:last-child) {
+            @include adaptive-value('margin-bottom', 40, 25, 1);
+        }
+    }
+
+    &__cell {
+        font-weight: 300;
+        @include adaptive-value('font-size', 20, 12, 1);
+
+        &--wide {
+            @include adaptive-value('font-size', 25, 12, 1);
+            flex: 1 1 auto;
+
+            em {
+                @include adaptive-value('font-size', 18, 10, 1);
+                margin-left: 22px;
+                color: #777777;
+            }
+        }
+    }
+}

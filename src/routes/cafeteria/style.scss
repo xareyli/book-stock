@@ -10,5 +10,13 @@
 }
 
 .section {
-    @include adaptive-value('margin-bottom', 115, 50, 1);
+    @include adaptive-value('padding-bottom', 115, 50, 1);
+
+    &__coffies {
+        @include adaptive-value('margin-top', 60, 0, 1);
+    }
+
+    &__desserts {
+        @include adaptive-value('margin-top', 100, 40, 1);
+    }
 }

@@ -163,5 +163,64 @@
             "salePrice": 2100,
             "ratingNumber": 12
         }
+    ],
+    "coffies": [
+        {
+            "name": "Американо",
+            "smallCost": 70,
+            "mediumCost": 90,
+            "largeCost": 100
+        },
+        {
+            "name": "Латте",
+            "smallCost": 80,
+            "mediumCost": 100,
+            "largeCost": 120
+        },
+        {
+            "name": "Капучино",
+            "smallCost": 90,
+            "mediumCost": 100,
+            "largeCost": 120
+        },
+        {
+            "name": "Эспрессо",
+            "smallCost": 65,
+            "mediumCost": 98,
+            "largeCost": 115
+        },
+        {
+            "name": "Фраппе",
+            "smallCost": 97,
+            "mediumCost": 140,
+            "largeCost": 160
+        }
+    ],
+    "desserts": [
+        {
+            "name": "Торт шоколадный мусс",
+            "weight": 125,
+            "price": 150
+        },
+        {
+            "name": "Торт пьяная вишня",
+            "weight": 95,
+            "price": 120
+        },
+        {
+            "name": "Тирамису",
+            "weight": 120,
+            "price": 200
+        },
+        {
+            "name": "Рулет",
+            "weight": 140,
+            "price": 187
+        },
+        {
+            "name": "Торт Медовик",
+            "weight": 200,
+            "price": 235
+        }
     ]
 }
