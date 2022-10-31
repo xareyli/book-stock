@@ -4,13 +4,20 @@ import style from './style.scss';
 
 import Authentication from '../authentication/';
 import Popup from '../ui/popup';
+import SlideoutMenu from '../slideout-menu';
+import navLinks from '../../constants/nav-links';
 
 const Header = () => {
     const headerElement = useRef(null);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+    const [isSlideoutOpen, setIsSlideoutOpen] = useState(true);
 
     const hidePopup = useCallback(() => {
         setIsAuthModalOpen(false);
+    }, []);
+
+    const toggleSlideout = useCallback(() => {
+        setIsSlideoutOpen(prev => !prev);
     }, []);
 
     useEffect(() => {
@@ -34,7 +41,10 @@ const Header = () => {
             <header class={style.header} ref={headerElement}>
                 <div class={`${style.header__wrapper}`}>
                     <div class={`${style.header__content} _container`}>
-                        <button class={`${style.header__burger} ${style.burgerBtn}`}>
+                        <button
+                            class={`${style.header__burger} ${style.burgerBtn}`}
+                            onClick={toggleSlideout}
+                        >
                             <span />
                         </button>
 
@@ -46,21 +56,11 @@ const Header = () => {
 
                         <nav class={`${style.header__nav} ${style.navigation}`}>
                             <ul class={style.navigation__list}>
-                                <li class={style.navigation__item}>
-                                    <Link href="/">Главная</Link>
-                                </li>
-                                <li class={style.navigation__item}>
-                                    <a href="#">Каталог</a>
-                                </li>
-                                <li class={style.navigation__item}>
-                                    <Link href="/cafeteria">Кофейня</Link>
-                                </li>
-                                <li class={style.navigation__item}>
-                                    <a href="#">Акции</a>
-                                </li>
-                                <li class={style.navigation__item}>
-                                    <a href="#">Контакты</a>
-                                </li>
+                                {navLinks.map(item =>
+                                    <li class={style.navigation__item}>
+                                        <Link href={item.href}>{item.name}</Link>
+                                    </li>
+                                )}
                             </ul>
                         </nav>
 
@@ -78,6 +78,11 @@ const Header = () => {
             <Popup isShown={isAuthModalOpen} hide={hidePopup}>
                 <Authentication />
             </Popup>
+
+            <SlideoutMenu
+                isOpen={isSlideoutOpen}
+                setIsOpen={setIsSlideoutOpen}
+            />
         </>
     );
 };
