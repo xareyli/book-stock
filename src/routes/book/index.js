@@ -1,9 +1,8 @@
+import { useEffect, useState } from 'preact/hooks';
 import style from './style.scss';
 
-import Button from '../../components/button';
-import { useEffect, useState } from 'preact/hooks';
 import { getOneBook } from '../../api/books';
-
+import Button from '../../components/ui/button';
 
 const Book = ({ id }) => {
     const [book, setBook] = useState(null);
@@ -11,45 +10,44 @@ const Book = ({ id }) => {
     useEffect(() => {
         const fetchBook = async () => {
             setBook(await getOneBook(id));
-       }
+        };
 
         fetchBook();
     }, []);
 
     if (!book) {
-        return <>loading...</>
+        return <>loading...</>;
     }
 
     const ratingStars = [];
 
     for (let i = 0; i < 5; i++) {
-        if (book.rating > i)
+        if (book.rating > i) {
             ratingStars.push(<i class={`icon-star ${style.metaField__star}`} />);
-        else
-            ratingStars.push(<i class={`icon-star-empty ${style.metaField__star} ${style['metaField__star--empty']}`} />);
+        } else {
+            ratingStars.push(
+                <i class={`icon-star-empty ${style.metaField__star} ${style['metaField__star--empty']}`} />,
+            );
+        }
     }
 
-    const bookDescription = <>
-        <p>{book.description.slice(0, 300)}</p>
-        <p>{book.description.slice(300, 700)}</p>
-        <p>{book.description.slice(700)}</p>
-    </>;
+    const bookDescription = (
+        <>
+            <p>{book.description.slice(0, 300)}</p>
+            <p>{book.description.slice(300, 700)}</p>
+            <p>{book.description.slice(700)}</p>
+        </>
+    );
 
     return (
         <main class={style.page}>
-            <div class={`${style.page__blackout} _blackout _blackout--visible`}></div>
+            <div class={`${style.page__blackout} _blackout _blackout--visible`} />
 
-            <div
-                class={`${style.page__background} _ibg`}
-                style={{ backgroundImage: `url(/${book.bgImg})` }}
-            />
+            <div class={`${style.page__background} _ibg`} style={{ backgroundImage: `url(/${book.bgImg})` }} />
 
             <div class={`${style.page__content} ${style.article} _container`}>
                 <div class={style.articleMeta}>
-                    <div
-                        class={`${style.articleMeta__img} _ibg`}
-                        style={{ backgroundImage: `url(/${book.img})` }}
-                    />
+                    <div class={`${style.articleMeta__img} _ibg`} style={{ backgroundImage: `url(/${book.img})` }} />
 
                     <div class={`${style.articleMeta__info} ${style.articleMetaInfo}`}>
                         <div class={style.metaField}>
@@ -78,14 +76,20 @@ const Book = ({ id }) => {
                         <div class={style.articleMetaInfo__footer}>
                             <Button>Купить</Button>
 
-                            <span class={`${style.articleMetaInfo__price} ${book.salePrice && style['articleMetaInfo__price--sale']}`}>{book.price} Р</span>
-                            {book.salePrice ?
+                            <span
+                                class={`${style.articleMetaInfo__price} ${
+                                    book.salePrice && style['articleMetaInfo__price--sale']
+                                }`}
+                            >
+                                {book.price} Р
+                            </span>
+                            {book.salePrice ? (
                                 <span class={style.articleMetaInfo__salePrice}>{book.salePrice} Р</span>
-                                :
+                            ) : (
                                 ''
-                            }
+                            )}
 
-                            <button class={`${style.articleMetaInfo__heart} icon-heart-empty`}></button>
+                            <button class={`${style.articleMetaInfo__heart} icon-heart-empty`} />
                         </div>
                     </div>
                 </div>
@@ -93,13 +97,11 @@ const Book = ({ id }) => {
                 <div class={style.article__textWrapper}>
                     <h3 class={style.article__textTitle}>Описание :</h3>
 
-                    <div class={style.article__text}>
-                        {bookDescription}
-                    </div>
+                    <div class={style.article__text}>{bookDescription}</div>
                 </div>
             </div>
         </main>
-    )
-}
+    );
+};
 
-export default Book
+export default Book;

@@ -1,4 +1,4 @@
-@import '../../style/inc';
+@import '../../../style/inc';
 
 .search {
     @include adaptive-value('padding', 15, 5, 1);

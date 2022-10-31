@@ -1,6 +1,6 @@
 import style from './style.scss';
 
-import BlockTitle from '../../block-title/';
+import BlockTitle from '../../ui/block-title/';
 
 const SectionTemplate = ({ className = '', title, children }) => (
     <section class={`${style.homeSection} ${className}`}>

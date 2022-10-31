@@ -3,12 +3,12 @@ import 'swiper/swiper.min';
 
 import pageBg from '../../assets/image/cafeteria-page/bg.png';
 import cafeteriaImg from '../../assets/image/cafeteria/img.png';
-import BlockTitle from '../../components/block-title';
 
-import Gallery from '../../components/cafeteria-page/gallery';
-import DescribedImage from '../../components/described-image';
 import Coffies from '../../components/cafeteria-page/coffies';
 import Desserts from '../../components/cafeteria-page/desserts';
+import Gallery from '../../components/cafeteria-page/gallery';
+import DescribedImage from '../../components/described-image';
+import BlockTitle from '../../components/ui/block-title';
 
 const Cafeteria = () => (
     <main class={`${style.page} _ibg`} style={{ backgroundImage: `url(${pageBg})` }}>

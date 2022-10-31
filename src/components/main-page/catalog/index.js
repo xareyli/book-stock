@@ -8,8 +8,8 @@ import style from './style.scss';
 
 import { getBooks } from '../../../api/books';
 import throttle from '../../../helpers/throttle';
-import Pagination from '../../pagination';
-import SearchInput from '../../search-input';
+import Pagination from '../../ui/pagination';
+import SearchInput from '../../ui/search-input';
 import SectionTemplate from '../section-template';
 
 let perPage = document.documentElement.offsetWidth >= 480 ? 6 : 3;

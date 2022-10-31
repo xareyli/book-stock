@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import style from './style.scss';
 
 import Authentication from '../authentication/';
-import Popup from '../popup';
+import Popup from '../ui/popup';
 
 const Header = () => {
     const headerElement = useRef(null);

@@ -4,12 +4,12 @@ import cafeteriaImg from '../../assets/image/cafeteria/img.png';
 import contactsBg from '../../assets/image/main-page/contacts/bg.png';
 import contactsMap from '../../assets/image/main-page/contacts/map.png';
 
-import BlockTitle from '../../components/block-title';
-import Button from '../../components/button';
 import DescribedImage from '../../components/described-image';
 import Catalog from '../../components/main-page/catalog';
 import SectionTemplate from '../../components/main-page/section-template';
 import Stock from '../../components/main-page/stock';
+import BlockTitle from '../../components/ui/block-title';
+import Button from '../../components/ui/button';
 
 const Home = () => (
     <main>

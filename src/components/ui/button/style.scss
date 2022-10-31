@@ -1,4 +1,4 @@
-@import '../../style/inc';
+@import '../../../style/inc';
 
 .button {
     @include adaptive-value('padding-right', 85, 40, 1);

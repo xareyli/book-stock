@@ -3,7 +3,7 @@ import style from './style.scss';
 
 import { getBooks } from '../../../api/books';
 import BookCard from '../../book-card';
-import Pagination from '../../pagination';
+import Pagination from '../../ui/pagination';
 import SectionTemplate from '../section-template';
 
 let perPage = 3;

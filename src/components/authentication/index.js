@@ -2,7 +2,7 @@ import { useState } from 'preact/hooks';
 
 import Field from './field';
 import style from './style.scss';
-import Button from '../button';
+import Button from '../ui/button';
 
 const Authentication = () => {
     const [mode, setMode] = useState('signin');
