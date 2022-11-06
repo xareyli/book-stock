@@ -65,7 +65,10 @@ const Header = () => {
                         </nav>
 
                         <div class={`${style.header__actions} ${style.actions}`}>
-                            <button class={`${style.actions__item} icon-heart`} />
+                            <Link href="/cart" class={style.actions__item}>
+                                <button class="icon-heart"></button>
+                            </Link>
+
                             <button
                                 onClick={() => setIsAuthModalOpen(true)}
                                 class={`${style.actions__item} icon-profile`}

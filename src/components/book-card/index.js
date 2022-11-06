@@ -2,8 +2,13 @@ import style from './style.scss';
 
 import IBG from '../ibg';
 import { Link } from 'preact-router/match';
+import { useCallback } from 'preact/hooks';
+import { useDispatch } from 'react-redux';
+import { addElement } from '../../redux/reducers/CartSlice';
 
 const BookCard = ({ className, book }) => {
+    const dispatch = useDispatch();
+
     let ratingStars = [];
 
     const isStock = book.salePrice;
@@ -16,6 +21,10 @@ const BookCard = ({ className, book }) => {
         }
     }
 
+    const onAddToCart = useCallback(() => {
+        dispatch(addElement(book));
+    }, []);
+
     return (
         <article class={`${className} ${style.card}`}>
             <Link href={`/book/${book.id}`}>
@@ -27,7 +36,7 @@ const BookCard = ({ className, book }) => {
                     <div class={style.card__starWrapper}>{ratingStars.map(item => item)}</div>
 
                     {isStock ? (
-                        <i class={`icon-heart-empty ${style.card__heart}`} />
+                        <i class={`icon-heart-empty ${style.card__heart}`} onClick={onAddToCart} />
                     ) : (
                         <span class="rating-number">{book.ratingNumber}</span>
                     )}
@@ -49,7 +58,7 @@ const BookCard = ({ className, book }) => {
                     {isStock ? (
                         <span class={style.card__newPrice}>{book.salePrice} Р</span>
                     ) : (
-                        <i class={`${style.card__heart} icon-heart-empty`} />
+                        <i class={`${style.card__heart} icon-heart-empty`} onClick={onAddToCart} />
                     )}
                 </div>
             </div>

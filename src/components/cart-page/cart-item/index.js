@@ -4,9 +4,22 @@ import mockImg from '../../../assets/books/img-1.png';
 import masterCardImg from '../../../assets/image/cart-page/master-card.png';
 import visaImg from '../../../assets/image/cart-page/visa.png';
 import Counter from '../../ui/counter';
+import { useDispatch } from 'react-redux';
+import { addElement, removeElement } from '../../../redux/reducers/CartSlice';
+import { useCallback } from 'preact/hooks';
 
 
-const CartItem = ({ className }) => {
+const CartItem = ({ className, book }) => {
+    const dispatch = useDispatch();
+
+    const onIncreaseCount = useCallback(() => {
+        dispatch(addElement(book));
+    }, []);
+
+    const onDecreaseCount = useCallback(() => {
+        dispatch(removeElement(book));
+    }, []);
+
     return (
         <div class={`${style.cartItem} ${className}`}>
             <div class={style.cartItem__checkbox}>
@@ -19,15 +32,21 @@ const CartItem = ({ className }) => {
             <div class={style.cartItem__img}>
                 <div
                     class="_ibg"
-                    style={{ backgroundImage: `url(${mockImg})` }}
+                    style={{ backgroundImage: `url(${book.img})` }}
                 />
             </div>
 
             <div class={`${style.cartItem__content} ${style.itemContent}`}>
                 <div class={style.itemContent__column}>
-                    <span class={style.itemContent__title}>Книга “Девушка с татуировкой дракона”</span>
+                    <span class={style.itemContent__title}>{book.name}</span>
 
-                    <div class={style.itemContent__counter}><Counter /></div>
+                    <div class={style.itemContent__counter}>
+                        <Counter
+                            value={book.count}
+                            onIncrease={onIncreaseCount}
+                            onDecrease={onDecreaseCount}
+                        />
+                    </div>
 
                     <button class={style.itemContent__removeBtn}>Удалить из избранного</button>
                 </div>
@@ -45,8 +64,14 @@ const CartItem = ({ className }) => {
                     </div>
 
                     <div class={style.orderDetails__row}>
-                        <span class={style.itemContent__price}>2800 Р</span>
-                        <div class={style.orderDetails__counter}><Counter /></div>
+                        <span class={style.itemContent__price}>{book.price * book.count} Р</span>
+                        <div class={style.orderDetails__counter}>
+                            <Counter
+                                value={book.count}
+                                onIncrease={onIncreaseCount}
+                                onDecrease={onDecreaseCount}
+                            />
+                            </div>
                     </div>
 
                     <div class={style.orderDetails__row}>

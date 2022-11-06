@@ -9,12 +9,27 @@ export const cartSlice = createSlice({
     initialState,
 
     reducers: {
-        // addElement: (state, action) => {
-            
-        // },
-        // removeElement: (state, action) => {
-            
-        // },
+        addElement: (state, action) => {
+            const element = state.cartElements.find(item => item.id === action.payload.id);
+
+            if (element) {
+                element.count++;
+            } else {
+                action.payload.count = 1;
+                state.cartElements.push(action.payload);
+            }
+        },
+        removeElement: (state, action) => {
+            const element = state.cartElements.find(item => item.id === action.payload.id);
+
+            if (element) {
+                if (element.count > 1) {
+                    element.count--;
+                } else {
+                    state.cartElements = state.cartElements.filter(cartElement => cartElement.id !== action.payload.id);
+                }
+            }
+        },
         // fullyRemoveElement: (state, action) => {
             
         // }
@@ -22,3 +37,4 @@ export const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
+export const { addElement, removeElement } = cartSlice.actions;
