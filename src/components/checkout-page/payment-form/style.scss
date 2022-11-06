@@ -1,0 +1,52 @@
+@import '../../../style/inc';
+
+.paymentForm {
+    @include adaptive-value('column-gap', 40, 16, 1);
+    @include adaptive-value('row-gap', 30, 20, 1);
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+
+    &__field--email,
+    &__field--card {
+        grid-column: span 2;
+    }
+
+    &__submitBtn {
+        @include adaptive-value('padding-bottom', 24.5, 7.5, 1);
+        @include adaptive-value('padding-top', 24.5, 7.5, 1);
+        @include adaptive-value('font-size', 20, 8, 1);
+        background-color: $secondary-color;
+        grid-column: span 2;
+        font-weight: 700;
+    }
+}
+
+.paymentField {
+    flex-direction: column;
+    display: flex;
+
+    &__label {
+        @include adaptive-value('font-size', 20, 10, 1);
+        margin-bottom: -10px;
+        pointer-events: none;
+        white-space: nowrap;
+        font-weight: 500;
+        display: block;
+    }
+
+    &__input {
+        border: 0;
+        border-bottom: 1px solid white;
+        transition: margin-top  .3s ease;
+        background-color: transparent;
+        padding-bottom: 5px;
+        color: #FFF;
+        width: 100%;
+        outline: 0;
+    }
+
+    &__input:not(:placeholder-shown),
+    &__input:focus {
+        margin-top: 20px;
+    }
+}

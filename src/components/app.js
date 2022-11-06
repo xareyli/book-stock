@@ -10,6 +10,7 @@ import Book from '../routes/book';
 import Cafeteria from '../routes/cafeteria';
 import Home from '../routes/home';
 import Cart from '../routes/cart';
+import Checkout from '../routes/checkout';
 
 const store = setupStore();
 
@@ -22,6 +23,7 @@ const App = () => (
                 <Book path="/book/:id" />
                 <Cafeteria path="/cafeteria" />
                 <Cart path="/cart" />
+                <Checkout path="/checkout" />
             </Router>
         </Provider>
     </div>

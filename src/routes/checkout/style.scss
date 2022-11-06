@@ -1,0 +1,106 @@
+@import '../../style/inc';
+
+.checkoutPage {
+    @include adaptive-value('padding-top', 200, 100, 1);
+    background-color: #171717;
+    box-sizing: border-box;
+    min-height: 100vh;
+
+    &__content {
+        @include adaptive-value('column-gap', 80, 10, 1);
+        @include adaptive-value('row-gap', 62, 54, 1);
+        grid-template-columns: 2fr 1fr;
+        display: grid;
+
+        @media (max-width: $md3 + px) {
+            grid-template-columns: 1.5fr 1fr;
+        }
+    }
+
+    &__title {
+        @include adaptive-value('margin-bottom', 20, 10, 1);
+        @include adaptive-value('font-size', 35, 15, 1);
+        font-weight: 700;
+    }
+
+    &__subtitle {
+        @include adaptive-value('margin-bottom', 44, 5, 1);
+        @include adaptive-value('font-size', 25, 12, 1);
+        font-weight: 500;
+    }
+
+    &__paymentMethod {
+        grid-column: 1/1;
+
+        @media (max-width: $md3 + px) {
+            grid-column: span 2;
+        }
+    }
+
+    &__paymentForm {
+        grid-column: 2/2;
+        grid-row: 1/1;
+    }
+}
+
+.orderItem {
+    @include adaptive-value('row-gap', 25, 20, 1);
+    @include adaptive-value('column-gap', 20, 10, 1);
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+
+    @media (max-width: $md3 + px) {
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    &__bookName {
+        @include adaptive-value('font-size', 20, 10, 1);
+        line-height: 1.25;
+
+        @media (max-width: $md3 + px) {
+            grid-column: span 2;
+        }
+    }
+
+    &__price {
+        @include adaptive-value('font-size', 25, 12, 1);
+        font-weight: 700;
+
+        @media (max-width: $md3 + px) {
+            grid-column: 2/2;
+            grid-row: 2/2
+        }
+    }
+
+    &__count {
+        @include adaptive-value('font-size', 18, 10, 1);
+
+        @media (max-width: $md3 + px) {
+            grid-column: 1/1;
+            grid-row: 2/2
+        }
+    }
+}
+
+.paymentMethod {
+    &__title {
+        @include adaptive-value('font-size', 25, 14, 1);
+        margin-bottom: 20px;
+        font-weight: 500;
+        display: block;
+    }
+
+    &__image {
+        @include adaptive-value('height', 194, 85, 1);
+        @include adaptive-value('width', 600, 280, 1);
+        border: 1px solid white;
+        justify-content: center;
+        border-radius: 15px;
+        align-items: center;
+        display: flex;
+
+        img {
+            @include adaptive-value('width', 350, 140, 1);
+        }
+    }
+}
