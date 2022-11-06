@@ -1,9 +1,12 @@
 import style from './style.scss'
 import visaImg from '../../assets/image/checkout-page/visa-big.png';
 import PaymentForm from '../../components/checkout-page/payment-form';
+import { useSelector } from 'react-redux';
 
 
 const Checkout = () => {
+    const cartElements = useSelector(state => state.cartReducer.cartElements);
+
     return (
         <div class={style.checkoutPage}>
             <div class="_container">
@@ -13,13 +16,15 @@ const Checkout = () => {
                         <h3 class={style.checkoutPage__subtitle}>Содержание заказа :</h3>
 
                         <div class={style.checkoutPage__orderContent}>
-                            <div class={style.orderItem}>
-                                <span class={style.orderItem__bookName}>Книга “Девушка с татуировкой дракона”</span>
+                            {cartElements.map(item =>
+                                <div class={style.orderItem}>
+                                    <span class={style.orderItem__bookName}>{item.name}</span>
 
-                                <span class={style.orderItem__price}>ИТОГО: 2800 Р</span>
+                                    <span class={style.orderItem__price}>ИТОГО: {item.price * item.count} Р</span>
 
-                                <span class={style.orderItem__count}>Кол-во&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</span>
-                            </div>
+                                    <span class={style.orderItem__count}>Кол-во&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.count}</span>
+                                </div>
+                            )}
                         </div>
                     </div>
 

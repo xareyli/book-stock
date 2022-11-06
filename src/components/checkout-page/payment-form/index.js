@@ -1,7 +1,16 @@
+import { useSelector } from 'react-redux';
 import style from './style.scss';
 
 
 const PaymentForm = ({ className }) => {
+    const cartElements = useSelector(state => state.cartReducer.cartElements);
+
+    let cartCost = 0;
+
+    for (const cartElement of cartElements) {
+        cartCost += cartElement.price * cartElement.count;
+    }
+
     return (
         <form class={`${className} ${style.paymentForm}`}>
             <div class={`${style.paymentForm__field} ${style.paymentField} ${style['paymentForm__field--card']}`}>
@@ -24,7 +33,7 @@ const PaymentForm = ({ className }) => {
                 <input class={style.paymentField__input} placeholder=" " type="text" />
             </div>
 
-            <button className={style.paymentForm__submitBtn}>ОПЛАТИТЬ 2800 Р</button>
+            <button className={style.paymentForm__submitBtn}>ОПЛАТИТЬ {cartCost} Р</button>
         </form>
     )
 }

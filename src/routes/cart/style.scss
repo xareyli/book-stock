@@ -13,6 +13,11 @@
     &__list {
         @include adaptive-value('row-gap', 65, 30, 1);
         flex-direction: column;
+        padding-bottom: 15px;
         display: flex;
+    }
+
+    &__checkoutBtn {
+        width: 100%;
     }
 }

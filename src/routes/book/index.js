@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
 import style from './style.scss';
 
 import { getOneBook } from '../../api/books';
 import Button from '../../components/ui/button';
+import { useDispatch } from 'react-redux';
+import { addElement } from '../../redux/reducers/CartSlice';
 
 const Book = ({ id }) => {
+    const dispatch = useDispatch();
     const [book, setBook] = useState(null);
 
     useEffect(() => {
@@ -38,6 +41,10 @@ const Book = ({ id }) => {
             <p>{book.description.slice(700)}</p>
         </>
     );
+
+    const onAddToCart = useCallback(() => {
+        dispatch(addElement(book));
+    }, []);
 
     return (
         <main class={style.page}>
@@ -74,7 +81,7 @@ const Book = ({ id }) => {
                         </div>
 
                         <div class={style.articleMetaInfo__footer}>
-                            <Button>Купить</Button>
+                            <Button onClick={onAddToCart}>Купить</Button>
 
                             <span
                                 class={`${style.articleMetaInfo__price} ${
@@ -89,7 +96,7 @@ const Book = ({ id }) => {
                                 ''
                             )}
 
-                            <button class={`${style.articleMetaInfo__heart} icon-heart-empty`} />
+                            <button class={`${style.articleMetaInfo__heart} icon-heart-empty`} onClick={onAddToCart} />
                         </div>
                     </div>
                 </div>
