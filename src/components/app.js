@@ -9,6 +9,7 @@ import { setupStore } from '../redux/store';
 import Book from '../routes/book';
 import Cafeteria from '../routes/cafeteria';
 import Home from '../routes/home';
+import Cart from '../routes/cart';
 
 const store = setupStore();
 
@@ -20,6 +21,7 @@ const App = () => (
                 <Home path="/" />
                 <Book path="/book/:id" />
                 <Cafeteria path="/cafeteria" />
+                <Cart path="/cart" />
             </Router>
         </Provider>
     </div>

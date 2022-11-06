@@ -10,7 +10,7 @@ import navLinks from '../../constants/nav-links';
 const Header = () => {
     const headerElement = useRef(null);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-    const [isSlideoutOpen, setIsSlideoutOpen] = useState(true);
+    const [isSlideoutOpen, setIsSlideoutOpen] = useState(false);
 
     const hidePopup = useCallback(() => {
         setIsAuthModalOpen(false);

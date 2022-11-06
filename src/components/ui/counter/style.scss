@@ -1,0 +1,27 @@
+@import '../../../style/inc';
+
+.counter {
+    justify-content: space-between;
+    border: 3px solid white;
+    align-items: center;
+    border-radius: 2px;
+    padding: 3px 5px;
+    min-width: 80px;
+    display: flex;
+
+    @media (max-width: $md4 + px) {
+        border: 1px solid white;
+    }
+
+    @include adaptive-value('font-size', 20, 13, 1);
+    font-weight: 700;
+
+    &__controls {
+        font-weight: 400;
+        font-size: 25px;
+
+        button {
+            margin-left: 5px;
+        }
+    }
+}
