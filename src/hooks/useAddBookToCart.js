@@ -1,19 +1,34 @@
-import { useCallback } from "preact/hooks";
+import { useCallback, useEffect, useState } from "preact/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupState } from "../redux/reducers/AuthSlice";
 import { addElement } from "../redux/reducers/CartSlice";
 
 const useAddBookToCart = book => {
-    const isAuth = useSelector(state => state.authReducer.isAuthenticated);
+    const authReducer = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
+    const [hasTryedAdd, setHasTryedAdd] = useState(false);
 
     const addToCartCallback = useCallback(() => {
-        if (!isAuth) {
+        if (!authReducer.isAuthenticated) {
             dispatch(setPopupState(true));
+            setHasTryedAdd(true);
         } else {
             dispatch(addElement(book));
         }
-    }, [isAuth, book]);
+    }, [authReducer.isAuthenticated, book]);
+
+    useEffect(() => {
+        if (hasTryedAdd) {
+            dispatch(addElement(book));
+            setHasTryedAdd(false);
+        }
+    }, [authReducer.isAuthenticated]);
+
+    useEffect(() => {
+        if (!authReducer.isAuthPopupOpen) {
+            setHasTryedAdd(false);
+        }
+    }, [authReducer.isAuthPopupOpen]);
 
     return addToCartCallback;
 };
