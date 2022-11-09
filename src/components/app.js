@@ -11,6 +11,7 @@ import Cafeteria from '../routes/cafeteria';
 import Home from '../routes/home';
 import Cart from '../routes/cart';
 import Checkout from '../routes/checkout';
+import Authentication from './authentication';
 
 const store = setupStore();
 
@@ -18,6 +19,7 @@ const App = () => (
     <div id="app">
         <Provider store={store}>
             <Header />
+            <Authentication />
             <Router>
                 <Home path="/" />
                 <Book path="/book/:id" />

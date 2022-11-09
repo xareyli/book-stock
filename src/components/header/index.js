@@ -2,22 +2,22 @@ import { Link } from 'preact-router/match';
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import style from './style.scss';
 
-import Authentication from '../authentication/';
-import Popup from '../ui/popup';
 import SlideoutMenu from '../slideout-menu';
 import navLinks from '../../constants/nav-links';
+import { useDispatch } from 'react-redux';
+import { setPopupState } from '../../redux/reducers/AuthSlice';
 
 const Header = () => {
     const headerElement = useRef(null);
-    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const [isSlideoutOpen, setIsSlideoutOpen] = useState(false);
-
-    const hidePopup = useCallback(() => {
-        setIsAuthModalOpen(false);
-    }, []);
+    const dispatch = useDispatch();
 
     const toggleSlideout = useCallback(() => {
         setIsSlideoutOpen(prev => !prev);
+    }, []);
+
+    const openAuthModal = useCallback(() => {
+        dispatch(setPopupState(true));
     }, []);
 
     useEffect(() => {
@@ -70,17 +70,13 @@ const Header = () => {
                             </Link>
 
                             <button
-                                onClick={() => setIsAuthModalOpen(true)}
+                                onClick={openAuthModal}
                                 class={`${style.actions__item} icon-profile`}
                             />
                         </div>
                     </div>
                 </div>
             </header>
-
-            <Popup isShown={isAuthModalOpen} hide={hidePopup}>
-                <Authentication />
-            </Popup>
 
             <SlideoutMenu
                 isOpen={isSlideoutOpen}
