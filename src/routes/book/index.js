@@ -1,13 +1,11 @@
-import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import style from './style.scss';
 
 import { getOneBook } from '../../api/books';
 import Button from '../../components/ui/button';
-import { useDispatch } from 'react-redux';
-import { addElement } from '../../redux/reducers/CartSlice';
+import useAddBookToCart from '../../hooks/useAddBookToCart';
 
 const Book = ({ id }) => {
-    const dispatch = useDispatch();
     const [book, setBook] = useState(null);
 
     useEffect(() => {
@@ -42,9 +40,7 @@ const Book = ({ id }) => {
         </>
     );
 
-    const onAddToCart = useCallback(() => {
-        dispatch(addElement(book));
-    }, []);
+    const onAddToCart = useAddBookToCart(book);
 
     return (
         <main class={style.page}>

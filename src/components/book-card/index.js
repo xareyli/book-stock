@@ -2,13 +2,9 @@ import style from './style.scss';
 
 import IBG from '../ibg';
 import { Link } from 'preact-router/match';
-import { useCallback } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
-import { addElement } from '../../redux/reducers/CartSlice';
+import useAddBookToCart from '../../hooks/useAddBookToCart';
 
 const BookCard = ({ className, book }) => {
-    const dispatch = useDispatch();
-
     let ratingStars = [];
 
     const isStock = book.salePrice;
@@ -21,9 +17,7 @@ const BookCard = ({ className, book }) => {
         }
     }
 
-    const onAddToCart = useCallback(() => {
-        dispatch(addElement(book));
-    }, []);
+    const onAddToCart = useAddBookToCart(book);
 
     return (
         <article class={`${className} ${style.card}`}>
