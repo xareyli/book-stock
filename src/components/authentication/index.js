@@ -21,7 +21,6 @@ const Authentication = () => {
         e.preventDefault();
 
         dispatch(authenticate());
-        hideModal();
     }, []);
 
     return (

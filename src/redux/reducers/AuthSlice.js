@@ -12,9 +12,11 @@ export const authSlice = createSlice({
     reducers: {
         authenticate: state => {
             state.isAuthenticated = true;
+            state.isAuthPopupOpen = false;
         },
         setPopupState: (state, action) => {
-            state.isAuthPopupOpen = action.payload;
+            if (!state.isAuthenticated)
+                state.isAuthPopupOpen = action.payload;
         }
     },
 });
