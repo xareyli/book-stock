@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { h } from 'preact';
 
 import { authNeededRoutes, publicRoutes } from '../constants/routes';
+import NotFound from "../routes/404";
 
 
 const AppRouter = () => {
@@ -18,6 +19,8 @@ const AppRouter = () => {
             {isAuth && authNeededRoutes.map(route =>
                 h(route.component, {path: route.path})
             )}
+
+            <NotFound default />
         </Router>
     )
 }
