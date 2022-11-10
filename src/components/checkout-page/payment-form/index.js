@@ -1,3 +1,6 @@
+import { route } from 'preact-router';
+import { useCallback } from 'preact/hooks';
+
 import { useSelector } from 'react-redux';
 import style from './style.scss';
 
@@ -10,6 +13,12 @@ const PaymentForm = ({ className }) => {
     for (const cartElement of cartElements) {
         cartCost += cartElement.price * cartElement.count;
     }
+
+    const onSubmit = useCallback(e => {
+        e.preventDefault();
+
+        route('/checkout-done');
+    }, []);
 
     return (
         <form class={`${className} ${style.paymentForm}`}>
@@ -33,7 +42,9 @@ const PaymentForm = ({ className }) => {
                 <input class={style.paymentField__input} placeholder=" " type="text" />
             </div>
 
-            <button className={style.paymentForm__submitBtn}>ОПЛАТИТЬ {cartCost} Р</button>
+                <button className={style.paymentForm__submitBtn} onClick={onSubmit}>
+                    ОПЛАТИТЬ {cartCost} Р
+                </button>
         </form>
     )
 }

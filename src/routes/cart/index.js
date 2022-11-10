@@ -12,7 +12,7 @@ const Cart = () => {
 
     if (cartElements.length < 1) {
         return (
-            <div class={style.cartPage}>
+            <div class={`_technical-page ${style.cartPage}`}>
                 <div class="_container">
                     The cart is empty
                 </div>
@@ -21,7 +21,7 @@ const Cart = () => {
     }
 
     return (
-        <div class={style.cartPage}>
+        <div class={`_technical-page ${style.cartPage}`}>
             <div class="_container">
                 <div class={style.cartPage__list}>
                     {cartElements.map(cartItem =>

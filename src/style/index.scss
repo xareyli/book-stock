@@ -190,6 +190,14 @@ button {
     }
 }
 
+._technical-page {
+    @include adaptive-value('padding-top', 200, 100, 1);
+    background-color: #171717;
+    box-sizing: border-box;
+    min-height: 100vh;
+    color: #FFF;
+}
+
 .rating-number {
     background-color: $secondary-color;
     display: inline-block;

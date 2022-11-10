@@ -15,9 +15,16 @@
         @include adaptive-value('padding-bottom', 24.5, 7.5, 1);
         @include adaptive-value('padding-top', 24.5, 7.5, 1);
         @include adaptive-value('font-size', 20, 8, 1);
+        transition: background-color, color .3s ease;
         background-color: $secondary-color;
+        border: 3px solid $secondary-color;
         grid-column: span 2;
         font-weight: 700;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $secondary-color;
+        }
     }
 }
 

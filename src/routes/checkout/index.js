@@ -8,7 +8,7 @@ const Checkout = () => {
     const cartElements = useSelector(state => state.cartReducer.cartElements);
 
     return (
-        <div class={style.checkoutPage}>
+        <div class={`_technical-page ${style.checkoutPage}`}>
             <div class="_container">
                 <div class={style.checkoutPage__content}>
                     <div class={style.checkoutPage__mainInfo}>

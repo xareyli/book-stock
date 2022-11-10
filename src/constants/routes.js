@@ -2,6 +2,7 @@ import Book from "../routes/book";
 import Cafeteria from "../routes/cafeteria";
 import Cart from "../routes/cart";
 import Checkout from "../routes/checkout";
+import CheckoutDone from "../routes/checkout-done";
 import Home from "../routes/home";
 
 
@@ -17,6 +18,10 @@ export const publicRoutes = [
     {
         component: Cafeteria,
         path: '/cafeteria'
+    },
+    {
+        component: CheckoutDone,
+        path: '/checkout-done'
     },
 ];
 

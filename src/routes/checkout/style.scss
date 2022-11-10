@@ -1,11 +1,6 @@
 @import '../../style/inc';
 
 .checkoutPage {
-    @include adaptive-value('padding-top', 200, 100, 1);
-    background-color: #171717;
-    box-sizing: border-box;
-    min-height: 100vh;
-
     &__content {
         @include adaptive-value('column-gap', 80, 10, 1);
         @include adaptive-value('row-gap', 62, 54, 1);
