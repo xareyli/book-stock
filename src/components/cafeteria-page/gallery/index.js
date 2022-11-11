@@ -46,17 +46,9 @@ const Gallery = () => {
                 breakpoints={{
                     768: {
                         spaceBetween: 25,
-                        navigation: {
-                            prevEl: navigationPrevRef.current,
-                            nextEl: navigationNextRef.current,
-                        },
                     },
                     1000: {
                         spaceBetween: 80,
-                        navigation: {
-                            prevEl: navigationPrevRef.current,
-                            nextEl: navigationNextRef.current,
-                        },
                     },
                 }}
             >
