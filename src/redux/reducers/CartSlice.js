@@ -30,11 +30,11 @@ export const cartSlice = createSlice({
                 }
             }
         },
-        // fullyRemoveElement: (state, action) => {
-            
-        // }
+        fullyRemoveElement: (state, action) => {
+            state.cartElements = state.cartElements.filter(cartElement => cartElement.id !== action.payload.id);
+        }
     },
 });
 
 export default cartSlice.reducer;
-export const { addElement, removeElement } = cartSlice.actions;
+export const { addElement, removeElement, fullyRemoveElement } = cartSlice.actions;

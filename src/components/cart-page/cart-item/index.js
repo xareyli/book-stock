@@ -1,11 +1,10 @@
 import style from './style.scss'
 
-import mockImg from '../../../assets/books/img-1.png';
 import masterCardImg from '../../../assets/image/cart-page/master-card.png';
 import visaImg from '../../../assets/image/cart-page/visa.png';
 import Counter from '../../ui/counter';
 import { useDispatch } from 'react-redux';
-import { addElement, removeElement } from '../../../redux/reducers/CartSlice';
+import { addElement, removeElement, fullyRemoveElement } from '../../../redux/reducers/CartSlice';
 import { useCallback } from 'preact/hooks';
 
 
@@ -18,6 +17,10 @@ const CartItem = ({ className, book }) => {
 
     const onDecreaseCount = useCallback(() => {
         dispatch(removeElement(book));
+    }, []);
+
+    const onRemoveElement = useCallback(() => {
+        dispatch(fullyRemoveElement(book));
     }, []);
 
     return (
@@ -48,7 +51,7 @@ const CartItem = ({ className, book }) => {
                         />
                     </div>
 
-                    <button class={style.itemContent__removeBtn}>Удалить из избранного</button>
+                    <button class={style.itemContent__removeBtn} onClick={onRemoveElement}>Удалить из избранного</button>
                 </div>
 
                 <div class={`${style.itemContent__column} ${style.orderDetails}`}>
