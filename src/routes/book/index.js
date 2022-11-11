@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
 import style from './style.scss';
 
 import { getOneBook } from '../../api/books';
 import Button from '../../components/ui/button';
 import useAddBookToCart from '../../hooks/useAddBookToCart';
+import HeartBtn from '../../components/ui/heart-btn';
+import { route } from 'preact-router';
 
 const Book = ({ id }) => {
     const [book, setBook] = useState(null);
@@ -42,6 +44,8 @@ const Book = ({ id }) => {
 
     const onAddToCart = useAddBookToCart(book);
 
+    const onBuyBtnClick = useCallback(() => onAddToCart(() => route('/cart')), []);
+
     return (
         <main class={style.page}>
             <div class={`${style.page__blackout} _blackout _blackout--visible`} />
@@ -77,7 +81,7 @@ const Book = ({ id }) => {
                         </div>
 
                         <div class={style.articleMetaInfo__footer}>
-                            <Button onClick={onAddToCart}>Купить</Button>
+                            <Button onClick={onBuyBtnClick}>Купить</Button>
 
                             <span
                                 class={`${style.articleMetaInfo__price} ${
@@ -92,7 +96,7 @@ const Book = ({ id }) => {
                                 ''
                             )}
 
-                            <button class={`${style.articleMetaInfo__heart} icon-heart-empty`} onClick={onAddToCart} />
+                            <HeartBtn className={style.articleMetaInfo__heart} book={book} />
                         </div>
                     </div>
                 </div>

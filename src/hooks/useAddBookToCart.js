@@ -8,12 +8,13 @@ const useAddBookToCart = book => {
     const dispatch = useDispatch();
     const [hasTryedAdd, setHasTryedAdd] = useState(false);
 
-    const addToCartCallback = useCallback(() => {
+    const addToCartCallback = useCallback((onAdded) => {
         if (!authReducer.isAuthenticated) {
             dispatch(setPopupState(true));
             setHasTryedAdd(true);
         } else {
             dispatch(addElement(book));
+            onAdded();
         }
     }, [authReducer.isAuthenticated, book]);
 

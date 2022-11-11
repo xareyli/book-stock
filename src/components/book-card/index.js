@@ -2,9 +2,16 @@ import style from './style.scss';
 
 import IBG from '../ibg';
 import { Link } from 'preact-router/match';
+import HeartBtn from '../ui/heart-btn';
+import { useSelector } from 'react-redux';
+import { useCallback } from 'preact/hooks';
+import { route } from 'preact-router';
 import useAddBookToCart from '../../hooks/useAddBookToCart';
 
 const BookCard = ({ className, book }) => {
+    const isInCart = useSelector(state => state.cartReducer.cartElements.find(item => item.id === book.id));
+    const addToCart = useAddBookToCart(book);
+
     let ratingStars = [];
 
     const isStock = book.salePrice;
@@ -17,7 +24,9 @@ const BookCard = ({ className, book }) => {
         }
     }
 
-    const onAddToCart = useAddBookToCart(book);
+    const onBuyBtnClick = useCallback(() => {
+        addToCart(() => route('/cart'));
+    }, [addToCart]);
 
     return (
         <article class={`${className} ${style.card}`}>
@@ -30,7 +39,7 @@ const BookCard = ({ className, book }) => {
                     <div class={style.card__starWrapper}>{ratingStars.map(item => item)}</div>
 
                     {isStock ? (
-                        <i class={`icon-heart-empty ${style.card__heart}`} onClick={onAddToCart} />
+                        <HeartBtn className={style.card__heart} checked={isInCart} book={book} />
                     ) : (
                         <span class="rating-number">{book.ratingNumber}</span>
                     )}
@@ -43,7 +52,7 @@ const BookCard = ({ className, book }) => {
                 </div>
 
                 <div class={style.card__footer}>
-                    <button class={style.card__buyBtn}>Купить</button>
+                    <button class={style.card__buyBtn} onClick={onBuyBtnClick}>Купить</button>
 
                     <span class={`${style.card__price} ${isStock ? style['card__price--old'] : ''}`}>
                         {book.price} Р
@@ -52,7 +61,7 @@ const BookCard = ({ className, book }) => {
                     {isStock ? (
                         <span class={style.card__newPrice}>{book.salePrice} Р</span>
                     ) : (
-                        <i class={`${style.card__heart} icon-heart-empty`} onClick={onAddToCart} />
+                        <HeartBtn className={style.card__heart} checked={isInCart} book={book} />
                     )}
                 </div>
             </div>
