@@ -4,12 +4,13 @@ import style from './style.scss';
 
 import SlideoutMenu from '../slideout-menu';
 import navLinks from '../../constants/nav-links';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPopupState } from '../../redux/reducers/AuthSlice';
 
 const Header = () => {
     const headerElement = useRef(null);
     const [isSlideoutOpen, setIsSlideoutOpen] = useState(false);
+    const isAuth = useSelector(state => state.authReducer.isAuthenticated);
     const dispatch = useDispatch();
 
     const toggleSlideout = useCallback(() => {
@@ -65,7 +66,7 @@ const Header = () => {
                         </nav>
 
                         <div class={`${style.header__actions} ${style.actions}`}>
-                            <Link href="/cart" class={style.actions__item}>
+                            <Link href={isAuth ? "/cart" : ""} class={style.actions__item}>
                                 <button class="icon-heart"></button>
                             </Link>
 

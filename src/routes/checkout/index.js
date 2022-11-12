@@ -7,6 +7,16 @@ import { useSelector } from 'react-redux';
 const Checkout = () => {
     const cartElements = useSelector(state => state.cartReducer.cartElements);
 
+    if (!cartElements.length) {
+        return (
+            <div class={`_technical-page ${style.checkoutPage}`}>
+                <div class="_container">
+                    Корзина пуста
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div class={`_technical-page ${style.checkoutPage}`}>
             <div class="_container">

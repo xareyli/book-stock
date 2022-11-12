@@ -14,7 +14,7 @@ const Cart = () => {
         return (
             <div class={`_technical-page ${style.cartPage}`}>
                 <div class="_container">
-                    The cart is empty
+                    Корзина пуста
                 </div>
             </div>
         )
@@ -30,7 +30,7 @@ const Cart = () => {
 
                     <Link href="/checkout">
                         <Button className={style.cartPage__checkoutBtn}>
-                            Proceed to checkout
+                            К оплате
                         </Button>
                     </Link>
                 </div>

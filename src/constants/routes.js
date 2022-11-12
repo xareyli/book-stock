@@ -19,10 +19,6 @@ export const publicRoutes = [
         component: Cafeteria,
         path: '/cafeteria'
     },
-    {
-        component: CheckoutDone,
-        path: '/checkout-done'
-    },
 ];
 
 export const authNeededRoutes = [
@@ -33,5 +29,9 @@ export const authNeededRoutes = [
     {
         component: Checkout,
         path: '/checkout'
+    },
+    {
+        component: CheckoutDone,
+        path: '/checkout-done'
     },
 ];

@@ -5,7 +5,7 @@ const navLinks = [
     },
     {
         name: 'Каталог',
-        href: '/checkout'
+        href: '/'
     },
     {
         name: 'Кофейня',
