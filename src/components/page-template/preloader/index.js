@@ -6,7 +6,6 @@ const Prealoder = () => {
 
     useEffect(() => {
         setTimeout( () => {
-            console.log(style.preloader + ' ' + style.preloader__done);
             setPrealoderClass(style.preloader + ' ' + style.preloader__done);
         }, 450);
     }, []);
