@@ -1,6 +1,7 @@
 import style from './style.scss';
 
 import BookCard from '../../book-card';
+import LoadingIndication from '../../ui/loading-indication';
 
 const ProductsLoop = ({ isLoading, products }) => (
     <>
@@ -11,7 +12,7 @@ const ProductsLoop = ({ isLoading, products }) => (
 
         {products.length === 0 ? 'nOthing found :(' : ''}
 
-        {isLoading ? 'Загрузка...' : ''}
+        {isLoading ? <LoadingIndication className={style.loader} /> : ''}
     </>
 );
 

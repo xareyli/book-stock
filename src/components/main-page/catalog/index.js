@@ -65,7 +65,7 @@ const Catalog = ({}) => {
                         />
                     </div>
 
-                    <div class={`${style.catalog__productsGrid} ${style.productsGrid}`}>
+                    <div class={`${style.catalog__productsGrid} ${style.productsGrid} ${ (isLoading ? style.productsGrid__loading : '')}`}>
                         <ProductsLoop isLoading={isLoading} products={products} />
                     </div>
                 </div>
