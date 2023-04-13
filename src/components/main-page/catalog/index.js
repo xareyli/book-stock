@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useState } from 'preact/hooks';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'preact/hooks';
 
 import { catalogReducer, catalogInitialState } from './catalogReducer';
 import Filters from './filters';
@@ -42,8 +42,16 @@ const Catalog = ({}) => {
         fetchBooks(catalogState);
     }, [catalogState.search, catalogState.sortType, catalogState.filters, catalogState.page, perPage]);
 
+    const ref = useRef(null);
+
+    useEffect(() => {
+        document.addEventListener('scrollToCatalog', () => {
+            ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }, []);
+
     return (
-        <SectionTemplate className={style.catalog} title="Каталог">
+        <SectionTemplate sectionRef={ref} className={style.catalog} title="Каталог">
             <div class={style.catalog__grid}>
                 <div class={style.catalog__filtersWrapper}>
                     <span class={`${style.catalog__filtersTitle} ${style.filtersTitle}`}>Фильтры</span>

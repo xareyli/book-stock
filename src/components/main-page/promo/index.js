@@ -1,8 +1,13 @@
+import { useCallback } from 'preact/hooks';
 import Button from '../../ui/button';
 import style from './style.scss';
 
 const Promo = () => {
+    const catalogCallback = useCallback(() => {
+        const event = new Event('scrollToCatalog');
 
+        document.dispatchEvent(event);
+    }, []);
 
     return (
         <section class={style.promo}>
@@ -28,7 +33,7 @@ const Promo = () => {
                     </div>
                 </div>
 
-                <Button>Каталог</Button>
+                <Button onClick={catalogCallback}>Каталог</Button>
             </div>
         </section>
     )
