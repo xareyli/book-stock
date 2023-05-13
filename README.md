@@ -1,22 +1,24 @@
-# book-stock
+# Интернет-магазин книг
 
-## CLI Commands
+Фронт-енд часть интернет-магазина.
+SPA-сайт, сделан с помощью библиотеки Preact.js и использует фейковый бэкенд от miragejs.
 
-``` bash
-# install dependencies
-npm install
+## Каталог
+Главная фича приложения - каталог с фильтрами.
+Есть фильтры по жанру, цене, реализован поиск, пагинация, сортировка.
+Всё работает плавно, без нареканий, багов и недочётов.
+При загрузке данных с мокового сервера появляется индикация загрузки.
+Отсутствие данных (например при некорректном поисковом запросе) также обрабатывается.
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Корзина
+Пользователь имеет возможность добавлять книги в корзину.
+Данная функция доступна только авторизованным пользователям. Авторизация простая - работают любые данные.
+После того как пользователь вошел, он может просматривать товары в корзине, удалять их, добавлять новые, менять количество, и оплатить их (страница чекаута тоже есть).
 
-# build for production with minification
-npm run build
+## Остальное
+Сайт имеет приятный дизайн, простые анимации и слайдер на странице кофейни.
+Вся вёрстка адаптивная, подстраивается под любой экран.
 
-# test the production build locally
-npm run serve
+https://book-store-7u0rnpzvl-xareyli.vercel.app/
 
-# run tests with jest and enzyme
-npm run test
-```
-
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+![preview](https://github.com/xareyli/book-stock/assets/118266546/1a7739b5-41b1-470c-a8fe-7395af512b3f)
