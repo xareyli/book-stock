@@ -50,9 +50,9 @@ const Header = () => {
                         </button>
 
                         <h1 class={style.header__logo}>
-                            <a href="#">
+                            <Link href="/">
                                 <em>book</em>stock
-                            </a>
+                            </Link>
                         </h1>
 
                         <nav class={`${style.header__nav} ${style.navigation}`}>
